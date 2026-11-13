@@ -112,6 +112,8 @@ QString Launcher::installKind()
     if (!qEnvironmentVariableIsEmpty("FLATPAK_ID"))
         return QStringLiteral("flatpak");
     const QString dir = QCoreApplication::applicationDirPath();
+    if (dir == QLatin1String("/usr/bin") && QFileInfo::exists(QStringLiteral("/usr/lib/setu/bundle-files")))
+        return QStringLiteral("bundle");
     if (dir.startsWith(QLatin1String("/usr/")) || dir.startsWith(QLatin1String("/opt/")))
         return QStringLiteral("package");
     return QStringLiteral("folder");
@@ -143,6 +145,11 @@ QString Launcher::uninstall()
         if (QProcess::startDetached(QStringLiteral("flatpak-spawn"), {QStringLiteral("--host"), QStringLiteral("flatpak"), QStringLiteral("uninstall"), QStringLiteral("-y"), qEnvironmentVariable("FLATPAK_ID")}))
             return {};
         return QStringLiteral("Remove Setu in your software manager.");
+    }
+    if (kind == QLatin1String("bundle")) {
+        if (QProcess::startDetached(QStringLiteral("pkexec"), {QStringLiteral("/usr/lib/setu/uninstall"), QStringLiteral("--yes")}))
+            return {};
+        return QStringLiteral("Run sudo /usr/lib/setu/uninstall in a terminal.");
     }
     if (kind == QLatin1String("package"))
         return QStringLiteral("Remove the setu package in your software manager, or with your package manager in a terminal.");

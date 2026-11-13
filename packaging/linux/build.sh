@@ -9,7 +9,7 @@ OUT="${OUT:-$ROOT/dist}"
 WORK="$ROOT/build/package"
 STAGE="$WORK/stage"
 FORMATS=("$@")
-[ ${#FORMATS[@]} -eq 0 ] && FORMATS=(appimage deb rpm)
+[ ${#FORMATS[@]} -eq 0 ] && FORMATS=(bundle)
 export PATH="$HOME/.cargo/bin:$PATH"
 export SETU_PACKAGING=1
 export CARGO_TARGET_DIR="${CARGO_TARGET_DIR:-$ROOT/build/package/cargo}"
@@ -77,51 +77,29 @@ for b in setu-daemon setu-engine; do
 done
 mkdir -p "$OUT"
 
-package_deb() {
-  have dpkg-deb || { echo "dpkg-deb not found; skipping .deb"; return; }
-  local root="$WORK/deb"
-  rm -rf "$root" && cp -a "$STAGE" "$root"
-  mkdir -p "$root/DEBIAN"
-  local size; size=$(du -sk "$root/usr" | cut -f1)
-  sed -e "s/@VERSION@/$VERSION/" -e "s/@ARCH@/$(dpkg --print-architecture 2>/dev/null || echo amd64)/" -e "s/@SIZE@/$size/" "$HERE/debian/control" > "$root/DEBIAN/control"
-  install -m755 "$HERE/debian/postinst" "$root/DEBIAN/postinst"
-  install -m755 "$HERE/debian/prerm" "$root/DEBIAN/prerm"
-  dpkg-deb --root-owner-group --build "$root" "$OUT/setu_${VERSION}_$(dpkg --print-architecture 2>/dev/null || echo amd64).deb"
-}
-
 package_rpm() {
   have rpmbuild || { echo "rpmbuild not found; skipping .rpm"; return; }
   rpmbuild -bb "$HERE/setu.spec" --define "_topdir $WORK/rpm" --define "stage $STAGE" --define "version $VERSION" --define "_rpmdir $OUT" --define "_build_name_fmt %%{NAME}-%%{VERSION}-%%{RELEASE}.%%{ARCH}.rpm"
 }
 
-package_appimage() {
-  local tool="${APPIMAGETOOL:-appimagetool}"
-  have "$tool" || { echo "appimagetool not found; skipping AppImage (set APPIMAGETOOL)"; return; }
-  local app="$WORK/Setu.AppDir"
-  rm -rf "$app" && cp -a "$STAGE" "$app"
-  if have linuxdeploy && linuxdeploy --list-plugins 2>/dev/null | grep -q qt; then
-    QML_SOURCES_PATHS="$ROOT/qml" linuxdeploy --appdir "$app" --plugin qt -e "$app/usr/bin/setu-ui" -e "$app/usr/bin/setu-shell" >/dev/null
-  else
-    echo "linuxdeploy with the Qt plugin was not found; the AppImage will use the system Qt" >&2
-  fi
-  if have espeak-ng; then
-    cp "$(command -v espeak-ng)" "$app/usr/lib/setu/"
-    for d in /usr/share/espeak-ng-data /usr/lib/x86_64-linux-gnu/espeak-ng-data /usr/lib64/espeak-ng-data; do
-      [ -d "$d" ] && cp -r "$d" "$app/usr/lib/setu/" && break
-    done
-  fi
-  install -m755 "$HERE/AppRun" "$app/AppRun"
-  cp "$HERE/ai.setu.Setu.desktop" "$app/"
-  cp "$HERE/ai.setu.Setu.svg" "$app/"
-  ARCH="$ARCH" "$tool" --no-appstream "$app" "$OUT/Setu-$VERSION-$ARCH.AppImage"
+package_bundle() {
+  local payload="$WORK/bundle-payload.tar.xz" header="$WORK/bundle-header.sh" root="$WORK/bundle"
+  rm -rf "$root" && cp -a "$STAGE" "$root"
+  install -Dm755 "$HERE/bundle-uninstall.sh" "$root/usr/lib/setu/uninstall"
+  tar -C "$root" --sort=name --mtime="@$SOURCE_DATE_EPOCH" --owner=0 --group=0 --numeric-owner -cf - ./usr | xz -T0 -9 > "$payload"
+  local lines; lines=$(wc -l < "$HERE/bundle.sh")
+  local qt glibc; qt=$(qtpaths6 --qt-version 2>/dev/null | cut -d. -f1,2); glibc=$(ldd --version | sed -n '1s/.* \([0-9][0-9.]*\)$/\1/p')
+  sed -e "s/@VERSION@/$VERSION/" -e "s/@SKIP@/$((lines + 1))/" -e "s/@NEEDS@/Qt ${qt:-6.8}.x and glibc ${glibc:-2.35} or newer/" "$HERE/bundle.sh" > "$header"
+  [ "$(wc -l < "$header")" -eq "$lines" ] || { echo "bundle header changed length" >&2; exit 1; }
+  cat "$header" "$payload" > "$OUT/Setu-$VERSION-$ARCH.bundle"
+  chmod 755 "$OUT/Setu-$VERSION-$ARCH.bundle"
 }
 
 for f in "${FORMATS[@]}"; do
   step "Package: $f"
   case "$f" in
-    deb) package_deb ;;
+    bundle) package_bundle ;;
     rpm) package_rpm ;;
-    appimage) package_appimage ;;
     flatpak) flatpak-builder --force-clean --repo="$WORK/flatpak-repo" "$WORK/flatpak" "$HERE/flatpak/ai.setu.Setu.yml" && flatpak build-bundle "$WORK/flatpak-repo" "$OUT/Setu-$VERSION.flatpak" ai.setu.Setu ;;
     *) echo "unknown format $f" >&2; exit 2 ;;
   esac

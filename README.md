@@ -305,8 +305,8 @@ A built-in library lets you choose models that suit your computer. Setup picks s
 <br>
 
 ```bash
-packaging/linux/build.sh            # AppImage, .deb and .rpm, whichever tools are installed
-packaging/linux/build.sh rpm        # one format
+packaging/linux/build.sh            # Setu-<version>-x86_64.bundle, the installer for any distro
+packaging/linux/build.sh rpm        # an .rpm for Fedora instead
 ```
 
 The packages, `SHA256SUMS` and an SPDX SBOM are written to `dist/`. Set `SETU_GPG_KEY` to sign the checksums.

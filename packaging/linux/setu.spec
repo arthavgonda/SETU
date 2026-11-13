@@ -6,7 +6,7 @@ License:        LicenseRef-Setu
 URL:            https://setu.invalid
 AutoReqProv:    no
 Requires:       qt6-qtbase >= 6.8, qt6-qtbase-gui >= 6.8, qt6-qtdeclarative >= 6.8, qt6-qtsvg >= 6.8
-Requires:       pulseaudio-libs, espeak-ng, libsecret, xcb-util
+Requires:       pulseaudio-libs, espeak-ng, libsecret, xcb-util, layer-shell-qt
 Recommends:     gnome-keyring, vulkan-loader
 %global debug_package %{nil}
 %global __strip /bin/true
