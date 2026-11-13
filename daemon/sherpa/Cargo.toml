@@ -1,0 +1,13 @@
+[package]
+name = "setu-sherpa"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+links = "sherpa-onnx-c-api"
+
+[dependencies]
+libc.workspace = true
+
+
+[build-dependencies]
+bindgen.workspace = true

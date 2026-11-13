@@ -1,0 +1,6 @@
+Setu
+Copyright (c) 2026 the Setu authors.
+
+The license for Setu's own code has not been chosen yet. Until it is, all rights are reserved by the authors. This notice will be replaced by the chosen license text before the first public release.
+
+Setu includes third-party components under their own licenses, listed under Third-party licenses.

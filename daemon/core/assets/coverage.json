@@ -1,0 +1,3637 @@
+{
+ "version": 1,
+ "layers": [
+  "system",
+  "channel",
+  "protocol",
+  "accessibility",
+  "keyboard",
+  "pointer",
+  "vision",
+  "service",
+  "command",
+  "setu"
+ ],
+ "actions": [
+  {
+   "id": "windows.focus",
+   "area": "windows",
+   "what": "Bring an app's window to the front",
+   "say": "switch to firefox",
+   "tool": "wm.focus",
+   "target": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "accessibility"
+   },
+   "today": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "windows.switch",
+   "area": "windows",
+   "what": "Switch to the next window",
+   "say": "switch windows",
+   "tool": "wm.switch",
+   "target": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "accessibility"
+   },
+   "today": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "windows.close",
+   "area": "windows",
+   "what": "Close the window in front",
+   "say": "close the window",
+   "tool": "close_app",
+   "target": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "accessibility"
+   },
+   "today": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "windows.minimise",
+   "area": "windows",
+   "what": "Minimise the window",
+   "say": "minimise the window",
+   "tool": "wm.place",
+   "target": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "accessibility"
+   },
+   "today": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "windows.maximise",
+   "area": "windows",
+   "what": "Maximise the window",
+   "say": "maximize the window",
+   "tool": "wm.place",
+   "target": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "accessibility"
+   },
+   "today": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "windows.restore",
+   "area": "windows",
+   "what": "Restore the window to its earlier size",
+   "say": "restore the window",
+   "tool": "wm.place",
+   "target": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "accessibility"
+   },
+   "today": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "windows.snap-left",
+   "area": "windows",
+   "what": "Snap the window to the left half",
+   "say": "snap this window to the left",
+   "tool": "wm.place",
+   "target": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "accessibility"
+   },
+   "today": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "windows.snap-right",
+   "area": "windows",
+   "what": "Snap the window to the right half",
+   "say": "snap this window to the right",
+   "tool": "wm.place",
+   "target": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "accessibility"
+   },
+   "today": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "windows.other-screen",
+   "area": "windows",
+   "what": "Move the window to the other screen",
+   "say": "move this window to the other screen",
+   "tool": "wm.place",
+   "target": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "accessibility"
+   },
+   "today": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "windows.side-by-side",
+   "area": "windows",
+   "what": "Put two apps side by side",
+   "say": "put firefox and vs code side by side",
+   "tool": "wm.side",
+   "target": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "accessibility"
+   },
+   "today": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "windows.desktop",
+   "area": "windows",
+   "what": "Show the desktop",
+   "say": "show desktop",
+   "tool": "wm.desktop",
+   "target": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "accessibility"
+   },
+   "today": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "windows.fullscreen",
+   "area": "windows",
+   "what": "Make the window full screen",
+   "say": "make this window full screen",
+   "tool": "key",
+   "target": "keyboard",
+   "today": {
+    "linux": "keyboard",
+    "windows": "keyboard",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "windows.workspace-switch",
+   "area": "windows",
+   "what": "Go to another workspace or desktop",
+   "say": "switch to workspace 2",
+   "tool": "wm.workspace",
+   "target": "keyboard",
+   "today": {
+    "linux": "keyboard",
+    "windows": "keyboard",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   },
+   "note": "GNOME reads its workspace shortcuts with gsettings first (Phase 12 keeps them in memory)."
+  },
+  {
+   "id": "windows.workspace-move",
+   "area": "windows",
+   "what": "Move the window to another workspace",
+   "say": "move this window to workspace 2",
+   "tool": "wm.workspace",
+   "target": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "system"
+   },
+   "today": {
+    "linux": "keyboard",
+    "windows": "gap",
+    "macos": "gap"
+   },
+   "note": "Windows lets a program move only its own windows between desktops (IVirtualDesktopManager), and macOS has no public API for Spaces, so this stays a gap there."
+  },
+  {
+   "id": "windows.resize",
+   "area": "windows",
+   "what": "Resize the window to a chosen size",
+   "say": "make this window half as wide",
+   "tool": "wm.frame",
+   "target": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "accessibility"
+   },
+   "today": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "accessibility"
+   },
+   "note": "Linux uses the window manager's own keyboard move and resize, checked against the window's size after each step; Windows uses SetWindowPos; macOS sets AXPosition and AXSize."
+  },
+  {
+   "id": "windows.move",
+   "area": "windows",
+   "what": "Move the window to a chosen place",
+   "say": "move the window to the top right",
+   "tool": "wm.frame",
+   "target": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "accessibility"
+   },
+   "today": {
+    "linux": "keyboard",
+    "windows": "system",
+    "macos": "accessibility"
+   },
+   "note": "Linux uses the window manager's own keyboard move and resize, checked against the window's size after each step; Windows uses SetWindowPos; macOS sets AXPosition and AXSize."
+  },
+  {
+   "id": "windows.close-all",
+   "area": "windows",
+   "what": "Close every window of one app",
+   "say": "close all firefox windows",
+   "tool": "close_app",
+   "target": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "channel"
+   },
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "channel"
+   }
+  },
+  {
+   "id": "windows.list",
+   "area": "windows",
+   "what": "Say which windows are open",
+   "say": "what windows are open",
+   "tool": "wm.list",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "apps.open",
+   "area": "apps",
+   "what": "Open an app",
+   "say": "open firefox",
+   "tool": "open_app",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "command",
+    "macos": "command"
+   },
+   "phase": {
+    "windows": 12,
+    "macos": 12
+   }
+  },
+  {
+   "id": "apps.close",
+   "area": "apps",
+   "what": "Close an app",
+   "say": "close firefox",
+   "tool": "close_app",
+   "target": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "channel"
+   },
+   "today": {
+    "linux": "system",
+    "windows": "command",
+    "macos": "command"
+   },
+   "phase": {
+    "windows": 12,
+    "macos": 15
+   }
+  },
+  {
+   "id": "apps.open-with",
+   "area": "apps",
+   "what": "Open a file in a chosen app",
+   "say": "open notes.txt in gedit",
+   "tool": "sys.file",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   },
+   "note": "The rules read the whole phrase as an app name."
+  },
+  {
+   "id": "apps.force-quit",
+   "area": "apps",
+   "what": "Force an app that hangs to quit",
+   "say": "force quit firefox",
+   "tool": "sys.kill",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "system"
+   }
+  },
+  {
+   "id": "apps.installed",
+   "area": "apps",
+   "what": "Say whether an app is installed",
+   "say": "is gimp installed",
+   "tool": "jobs.installed",
+   "target": "setu",
+   "today": {
+    "linux": "setu",
+    "windows": "setu",
+    "macos": "setu"
+   }
+  },
+  {
+   "id": "apps.click",
+   "area": "apps",
+   "what": "Press a button by its name",
+   "say": "click press me",
+   "tool": "ui.click",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "apps.click-in-app",
+   "area": "apps",
+   "what": "Press a button in a named app",
+   "say": "click models in setu",
+   "tool": "ui.click",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "apps.fill",
+   "area": "apps",
+   "what": "Type into a named field",
+   "say": "type anoop into the search field",
+   "tool": "ui.fill",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "apps.menu",
+   "area": "apps",
+   "what": "Open a menu or a menu item",
+   "say": "open the file menu",
+   "tool": "ui.click",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "apps.checkbox",
+   "area": "apps",
+   "what": "Tick or untick a box",
+   "say": "tick remember",
+   "tool": "ui.tick",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "apps.dropdown",
+   "area": "apps",
+   "what": "Choose from a dropdown",
+   "say": "choose english from the language dropdown",
+   "tool": "ui.choose",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "apps.cell",
+   "area": "apps",
+   "what": "Put a value in a spreadsheet cell by its name",
+   "say": "put 42 in cell b3",
+   "tool": "doc.cell",
+   "target": {
+    "linux": "channel",
+    "windows": "channel",
+    "macos": "channel"
+   },
+   "today": {
+    "linux": "keyboard",
+    "windows": "channel",
+    "macos": "gap"
+   },
+   "phase": {
+    "linux": 15,
+    "macos": 15
+   },
+   "note": "Windows: Excel through COM. Linux: Calc's Name Box through accessibility, then the value by keys; LibreOffice UNO would make it a channel. macOS: Numbers through Apple Events."
+  },
+  {
+   "id": "apps.cell-read",
+   "area": "apps",
+   "what": "Read a spreadsheet cell by its name",
+   "say": "what is in cell b3",
+   "tool": "doc.cell",
+   "target": {
+    "linux": "channel",
+    "windows": "channel",
+    "macos": "channel"
+   },
+   "today": {
+    "linux": "accessibility",
+    "windows": "channel",
+    "macos": "gap"
+   },
+   "phase": {
+    "linux": 15,
+    "macos": 15
+   },
+   "note": "Linux reads the cell through Calc's accessibility table, without the clipboard."
+  },
+  {
+   "id": "apps.export-pdf",
+   "area": "apps",
+   "what": "Save the open document as a PDF",
+   "say": "save this as a pdf",
+   "tool": "doc.export",
+   "target": {
+    "linux": "channel",
+    "windows": "channel",
+    "macos": "channel"
+   },
+   "today": {
+    "linux": "command",
+    "windows": "channel",
+    "macos": "command"
+   },
+   "phase": {
+    "linux": 15,
+    "macos": 15
+   },
+   "note": "Windows: Word, Excel or PowerPoint through COM."
+  },
+  {
+   "id": "apps.select-row",
+   "area": "apps",
+   "what": "Select an item in a list",
+   "say": "select papa",
+   "tool": "ui.click",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "apps.context-menu",
+   "area": "apps",
+   "what": "Open the right-click menu of an item",
+   "say": "right click continue",
+   "tool": "browser.page",
+   "target": "accessibility",
+   "today": "accessibility",
+   "note": "Uses the accessibility menu action (tests/native/test_page.py). Where an element has none, the same phrase falls back to a real right-click (apps.context-menu-pointer)."
+  },
+  {
+   "id": "apps.context-menu-pointer",
+   "area": "apps",
+   "what": "Right-click something that has no menu action",
+   "say": "right click target",
+   "tool": "browser.page",
+   "target": "pointer",
+   "today": "pointer"
+  },
+  {
+   "id": "apps.double-click",
+   "area": "apps",
+   "what": "Double-click an item",
+   "say": "double click continue",
+   "tool": "pointer.click",
+   "target": "pointer",
+   "today": "pointer"
+  },
+  {
+   "id": "apps.scroll",
+   "area": "apps",
+   "what": "Scroll the window by a page",
+   "say": "scroll down",
+   "tool": "key",
+   "target": "keyboard",
+   "today": {
+    "linux": "keyboard",
+    "windows": "keyboard",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "apps.scroll-smooth",
+   "area": "apps",
+   "what": "Scroll slowly or by a small amount",
+   "say": "scroll down slowly",
+   "tool": "pointer.scroll",
+   "target": "pointer",
+   "today": "pointer"
+  },
+  {
+   "id": "apps.drag",
+   "area": "apps",
+   "what": "Drag one thing onto another",
+   "say": "drag this to the right",
+   "tool": "pointer.drag",
+   "target": "pointer",
+   "today": "pointer"
+  },
+  {
+   "id": "apps.hover",
+   "area": "apps",
+   "what": "Hover over something",
+   "say": "hover over the menu",
+   "tool": "pointer.hover",
+   "target": "pointer",
+   "today": "pointer"
+  },
+  {
+   "id": "apps.hold",
+   "area": "apps",
+   "what": "Press and hold the mouse",
+   "say": "hold the mouse here",
+   "tool": "pointer.hold",
+   "target": "pointer",
+   "today": "pointer"
+  },
+  {
+   "id": "apps.release",
+   "area": "apps",
+   "what": "Let go of a held mouse button",
+   "say": "let go",
+   "tool": "pointer.release",
+   "target": "pointer",
+   "today": "pointer"
+  },
+  {
+   "id": "apps.click-here",
+   "area": "apps",
+   "what": "Click where the pointer is",
+   "say": "right click here",
+   "tool": "pointer.click",
+   "target": "pointer",
+   "today": "pointer"
+  },
+  {
+   "id": "apps.middle-click",
+   "area": "apps",
+   "what": "Middle-click something, such as a link to open it in a new tab",
+   "say": "middle click the link",
+   "tool": "pointer.click",
+   "target": "pointer",
+   "today": "pointer"
+  },
+  {
+   "id": "apps.scroll-sideways",
+   "area": "apps",
+   "what": "Scroll sideways",
+   "say": "scroll right",
+   "tool": "pointer.scroll",
+   "target": "pointer",
+   "today": "pointer"
+  },
+  {
+   "id": "apps.drag-onto",
+   "area": "apps",
+   "what": "Drag one thing onto another in the same window",
+   "say": "drag the report onto the trash",
+   "tool": "pointer.drag",
+   "target": "pointer",
+   "today": "pointer"
+  },
+  {
+   "id": "browser.drag-tab",
+   "area": "browser",
+   "what": "Move a tab along the tab strip",
+   "say": "drag this tab to the right",
+   "tool": "pointer.drag",
+   "target": "pointer",
+   "today": "pointer"
+  },
+  {
+   "id": "apps.numbers-show",
+   "area": "apps",
+   "what": "Show a number on every control",
+   "say": "show numbers",
+   "tool": "numbers",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "apps.numbers-click",
+   "area": "apps",
+   "what": "Press a control by its number",
+   "say": "click number three",
+   "tool": "numbers",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "apps.numbers-hide",
+   "area": "apps",
+   "what": "Hide the numbers",
+   "say": "hide numbers",
+   "tool": "numbers",
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "apps.keys",
+   "area": "apps",
+   "what": "Press a key or a shortcut",
+   "say": "press control s",
+   "tool": "key",
+   "target": "keyboard",
+   "today": {
+    "linux": "keyboard",
+    "windows": "keyboard",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "apps.back",
+   "area": "apps",
+   "what": "Go back",
+   "say": "go back",
+   "tool": "key",
+   "target": "keyboard",
+   "today": {
+    "linux": "keyboard",
+    "windows": "keyboard",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "apps.enter",
+   "area": "apps",
+   "what": "Press Enter",
+   "say": "press enter",
+   "tool": "key",
+   "target": "keyboard",
+   "today": {
+    "linux": "keyboard",
+    "windows": "keyboard",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "apps.no-tree-click",
+   "area": "apps",
+   "what": "Click something in an app with no accessibility tree",
+   "say": "click the thing that says continue",
+   "tool": "vision.click",
+   "target": "vision",
+   "today": {
+    "linux": "vision",
+    "windows": "vision",
+    "macos": "vision"
+   },
+   "note": "Works only when the app has an accessibility tree."
+  },
+  {
+   "id": "apps.read-screen",
+   "area": "apps",
+   "what": "Say what is on the screen",
+   "say": "what is on the screen",
+   "tool": "vision.read",
+   "target": "vision",
+   "today": {
+    "linux": "vision",
+    "windows": "vision",
+    "macos": "vision"
+   }
+  },
+  {
+   "id": "apps.read-window",
+   "area": "apps",
+   "what": "Read the text of the window aloud",
+   "say": "read this window",
+   "tool": "vision.read",
+   "target": "accessibility",
+   "today": "accessibility",
+   "note": "Reads the window's accessibility tree; windows with a thin tree fall back to OCR (Phase 11)."
+  },
+  {
+   "id": "apps.read-picture",
+   "area": "apps",
+   "what": "Read the text in a picture",
+   "say": "read this picture",
+   "tool": "vision.read",
+   "target": "vision",
+   "today": {
+    "linux": "vision",
+    "windows": "vision",
+    "macos": "vision"
+   }
+  },
+  {
+   "id": "apps.java",
+   "area": "apps",
+   "what": "Control a Java app",
+   "say": "turn on the java bridge",
+   "tool": "access.java",
+   "target": "accessibility",
+   "today": {
+    "linux": "gap",
+    "windows": "accessibility",
+    "macos": "accessibility"
+   },
+   "note": "Linux Java apps need java-atk-wrapper, which Fedora does not package; Setu says so once."
+  },
+  {
+   "id": "apps.wake",
+   "area": "apps",
+   "what": "Restart a browser so Setu can control it",
+   "say": "restart chrome",
+   "tool": "access.restart",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "system"
+   }
+  },
+  {
+   "id": "files.open-folder",
+   "area": "files",
+   "what": "Open a folder",
+   "say": "open the downloads folder",
+   "tool": "files.open",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 12
+   }
+  },
+  {
+   "id": "files.open-file",
+   "area": "files",
+   "what": "Open a file",
+   "say": "open the file budget.xlsx",
+   "tool": "files.openfile",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 12
+   }
+  },
+  {
+   "id": "files.find",
+   "area": "files",
+   "what": "Find a file by name",
+   "say": "find my resume",
+   "tool": "files.find",
+   "target": "system",
+   "today": "system"
+  },
+  {
+   "id": "files.reveal",
+   "area": "files",
+   "what": "Show a file selected in its folder",
+   "say": "show me invoice pdf in the folder",
+   "tool": "files.reveal",
+   "target": {
+    "linux": "channel",
+    "windows": "system",
+    "macos": "channel"
+   },
+   "today": {
+    "linux": "channel",
+    "windows": "system",
+    "macos": "channel"
+   }
+  },
+  {
+   "id": "files.where",
+   "area": "files",
+   "what": "Say which folders are open in the file manager",
+   "say": "which folder is open",
+   "tool": "files.where",
+   "target": "channel",
+   "today": "channel"
+  },
+  {
+   "id": "files.create-folder",
+   "area": "files",
+   "what": "Create a folder",
+   "say": "create a folder called tutorial",
+   "tool": "files.create",
+   "target": "system",
+   "today": "system"
+  },
+  {
+   "id": "files.create-file",
+   "area": "files",
+   "what": "Create a file",
+   "say": "create a file called notes.txt on the desktop",
+   "tool": "files.create",
+   "target": "system",
+   "today": "system"
+  },
+  {
+   "id": "files.delete",
+   "area": "files",
+   "what": "Move a file to the trash",
+   "say": "delete the file old.txt",
+   "tool": "files.delete",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 12
+   }
+  },
+  {
+   "id": "files.copy",
+   "area": "files",
+   "what": "Copy a file",
+   "say": "copy report.pdf to the desktop",
+   "tool": "files.copy",
+   "target": "system",
+   "today": "system"
+  },
+  {
+   "id": "files.move",
+   "area": "files",
+   "what": "Move a file",
+   "say": "move report.pdf to documents",
+   "tool": "files.move",
+   "target": "system",
+   "today": "system"
+  },
+  {
+   "id": "files.rename",
+   "area": "files",
+   "what": "Rename a file",
+   "say": "rename report.pdf to final.pdf",
+   "tool": "sys.file",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "system"
+   }
+  },
+  {
+   "id": "files.space",
+   "area": "files",
+   "what": "Say how much disk space is free",
+   "say": "how much space is left",
+   "tool": "files.space",
+   "target": "system",
+   "today": "system"
+  },
+  {
+   "id": "files.latest",
+   "area": "files",
+   "what": "Open the latest download",
+   "say": "open my latest download",
+   "tool": "files.latest",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 12
+   }
+  },
+  {
+   "id": "files.drive",
+   "area": "files",
+   "what": "Open a drive",
+   "say": "open c drive",
+   "tool": "files.open",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 12
+   }
+  },
+  {
+   "id": "files.zip",
+   "area": "files",
+   "what": "Compress a folder",
+   "say": "zip the folder photos",
+   "tool": "sys.file",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "system"
+   }
+  },
+  {
+   "id": "files.unzip",
+   "area": "files",
+   "what": "Extract an archive",
+   "say": "extract archive.zip",
+   "tool": "sys.file",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "system"
+   }
+  },
+  {
+   "id": "files.empty-trash",
+   "area": "files",
+   "what": "Empty the trash",
+   "say": "empty the trash",
+   "tool": "sys.trash",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 12
+   }
+  },
+  {
+   "id": "files.eject",
+   "area": "files",
+   "what": "Eject a USB drive",
+   "say": "eject the usb drive",
+   "tool": "sys.eject",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "windows": 12,
+    "macos": 12
+   },
+   "note": "UDisks2 on Linux; on Windows the volume is locked, dismounted and ejected with the storage IOCTLs (type-checked)."
+  },
+  {
+   "id": "files.properties",
+   "area": "files",
+   "what": "Show a file's properties",
+   "say": "show properties of report.pdf",
+   "tool": "sys.file",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "system"
+   },
+   "note": "The rules read this as a file called properties of report."
+  },
+  {
+   "id": "files.choose-folder",
+   "area": "files",
+   "what": "Walk folders by voice to pick one",
+   "say": "what folders are there",
+   "tool": "jobs.browse",
+   "target": "setu",
+   "today": {
+    "linux": "setu",
+    "windows": "setu",
+    "macos": "setu"
+   }
+  },
+  {
+   "id": "text.type",
+   "area": "text",
+   "what": "Type into the field in focus",
+   "say": "type hello world",
+   "tool": "type_text",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "text.write-in-app",
+   "area": "text",
+   "what": "Open an app and write text in it",
+   "say": "in scratchpad write hello there",
+   "tool": "app.write",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "text.select-all",
+   "area": "text",
+   "what": "Select everything",
+   "say": "select all",
+   "tool": "key",
+   "target": "keyboard",
+   "today": {
+    "linux": "keyboard",
+    "windows": "keyboard",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "text.copy",
+   "area": "text",
+   "what": "Copy",
+   "say": "copy",
+   "tool": "key",
+   "target": "keyboard",
+   "today": {
+    "linux": "keyboard",
+    "windows": "keyboard",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "text.paste",
+   "area": "text",
+   "what": "Paste",
+   "say": "paste",
+   "tool": "key",
+   "target": "keyboard",
+   "today": {
+    "linux": "keyboard",
+    "windows": "keyboard",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "text.cut",
+   "area": "text",
+   "what": "Cut",
+   "say": "cut",
+   "tool": "key",
+   "target": "keyboard",
+   "today": {
+    "linux": "keyboard",
+    "windows": "keyboard",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "text.undo",
+   "area": "text",
+   "what": "Undo the last edit in the app",
+   "say": "undo typing",
+   "tool": "key",
+   "target": "keyboard",
+   "today": {
+    "linux": "keyboard",
+    "windows": "keyboard",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "text.redo",
+   "area": "text",
+   "what": "Redo",
+   "say": "redo",
+   "tool": "key",
+   "target": "keyboard",
+   "today": {
+    "linux": "keyboard",
+    "windows": "keyboard",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "text.save",
+   "area": "text",
+   "what": "Save",
+   "say": "save",
+   "tool": "key",
+   "target": "keyboard",
+   "today": {
+    "linux": "keyboard",
+    "windows": "keyboard",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "text.find",
+   "area": "text",
+   "what": "Find text",
+   "say": "find on page",
+   "tool": "key",
+   "target": "keyboard",
+   "today": {
+    "linux": "keyboard",
+    "windows": "keyboard",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "text.zoom",
+   "area": "text",
+   "what": "Zoom in or out",
+   "say": "zoom in",
+   "tool": "key",
+   "target": "keyboard",
+   "today": {
+    "linux": "keyboard",
+    "windows": "keyboard",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "text.print",
+   "area": "text",
+   "what": "Print",
+   "say": "print",
+   "tool": "key",
+   "target": "keyboard",
+   "today": {
+    "linux": "keyboard",
+    "windows": "keyboard",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "text.delete-word",
+   "area": "text",
+   "what": "Delete the last word",
+   "say": "delete the last word",
+   "tool": "key",
+   "target": "keyboard",
+   "today": {
+    "linux": "keyboard",
+    "windows": "keyboard",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "text.select-word",
+   "area": "text",
+   "what": "Select a word",
+   "say": "select the last word",
+   "tool": "key",
+   "target": "keyboard",
+   "today": {
+    "linux": "keyboard",
+    "windows": "keyboard",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "text.caret",
+   "area": "text",
+   "what": "Move the caret",
+   "say": "go to the end of the line",
+   "tool": "key",
+   "target": "keyboard",
+   "today": {
+    "linux": "keyboard",
+    "windows": "keyboard",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "text.newline",
+   "area": "text",
+   "what": "Start a new line",
+   "say": "new line",
+   "tool": "key",
+   "target": "keyboard",
+   "today": {
+    "linux": "keyboard",
+    "windows": "keyboard",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "text.format",
+   "area": "text",
+   "what": "Make text bold or italic",
+   "say": "bold",
+   "tool": "key",
+   "target": "keyboard",
+   "today": {
+    "linux": "keyboard",
+    "windows": "keyboard",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "text.dictate",
+   "area": "text",
+   "what": "Dictate freely into any app",
+   "say": "dictate",
+   "tool": "text.dictate",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "text.read-back",
+   "area": "text",
+   "what": "Read the text back aloud",
+   "say": "read that back",
+   "tool": "vision.read",
+   "target": "accessibility",
+   "today": "accessibility",
+   "note": "Reads the window's accessibility tree; windows with a thin tree fall back to OCR (Phase 11)."
+  },
+  {
+   "id": "browser.open-site",
+   "area": "browser",
+   "what": "Open a website",
+   "say": "go to amazon",
+   "tool": "web.open",
+   "target": "protocol",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": 14
+  },
+  {
+   "id": "browser.search",
+   "area": "browser",
+   "what": "Search the web",
+   "say": "search for biryani recipes",
+   "tool": "web.search",
+   "target": "protocol",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": 14
+  },
+  {
+   "id": "browser.address-here",
+   "area": "browser",
+   "what": "Go to an address in the current tab",
+   "say": "go to github.com in this tab",
+   "tool": "browser.open",
+   "target": "protocol",
+   "today": {
+    "linux": "protocol",
+    "windows": "protocol",
+    "macos": "protocol"
+   },
+   "note": "Needs the Setu profile (Phase 14); without it Setu offers to set it up once. Windows and macOS are type-checked only."
+  },
+  {
+   "id": "browser.new-tab",
+   "area": "browser",
+   "what": "Open a new tab",
+   "say": "new tab",
+   "tool": "browser.tab.new",
+   "target": "protocol",
+   "today": "protocol",
+   "note": "Over CDP or BiDi when the browser in front is the Setu profile; accessibility and keys otherwise."
+  },
+  {
+   "id": "browser.close-tab",
+   "area": "browser",
+   "what": "Close the current tab",
+   "say": "close the tab",
+   "tool": "browser.tab.close",
+   "target": "protocol",
+   "today": "protocol",
+   "note": "Over CDP or BiDi when the browser in front is the Setu profile; accessibility and keys otherwise."
+  },
+  {
+   "id": "browser.close-tab-named",
+   "area": "browser",
+   "what": "Close a tab by its name",
+   "say": "close the whatsapp tab",
+   "tool": "browser.tab.close",
+   "target": "protocol",
+   "today": "protocol",
+   "note": "Over CDP or BiDi when the browser in front is the Setu profile; accessibility and keys otherwise."
+  },
+  {
+   "id": "browser.switch-tab",
+   "area": "browser",
+   "what": "Switch to a tab by its name",
+   "say": "switch to the whatsapp tab",
+   "tool": "browser.tab.activate",
+   "target": "protocol",
+   "today": "protocol",
+   "note": "Over CDP or BiDi when the browser in front is the Setu profile; accessibility and keys otherwise."
+  },
+  {
+   "id": "browser.switch-tab-number",
+   "area": "browser",
+   "what": "Switch to a tab by its number",
+   "say": "go to tab 1",
+   "tool": "browser.tab.activate",
+   "target": "accessibility",
+   "today": "accessibility",
+   "note": "Neither CDP nor BiDi knows the order of the tab strip, so \"go to tab 3\" reads the strip through accessibility."
+  },
+  {
+   "id": "browser.count-tabs",
+   "area": "browser",
+   "what": "Say how many tabs are open",
+   "say": "how many tabs are open",
+   "tool": "browser.tabs",
+   "target": "protocol",
+   "today": "protocol",
+   "note": "Over CDP or BiDi when the browser in front is the Setu profile; accessibility and keys otherwise."
+  },
+  {
+   "id": "browser.reopen-tab",
+   "area": "browser",
+   "what": "Reopen the tab that was just closed",
+   "say": "reopen the closed tab",
+   "tool": "browser.tab.reopen",
+   "target": "keyboard",
+   "today": {
+    "linux": "keyboard",
+    "windows": "keyboard",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "browser.duplicate",
+   "area": "browser",
+   "what": "Duplicate the tab",
+   "say": "duplicate this tab",
+   "tool": "browser.tab.duplicate",
+   "target": "protocol",
+   "today": "protocol",
+   "note": "Over CDP or BiDi when the browser in front is the Setu profile; accessibility and keys otherwise."
+  },
+  {
+   "id": "browser.pin",
+   "area": "browser",
+   "what": "Pin the tab",
+   "say": "pin this tab",
+   "tool": "browser.tab.pin",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "browser.detach",
+   "area": "browser",
+   "what": "Move the tab to a new window",
+   "say": "move this tab to a new window",
+   "tool": "browser.tab.detach",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "browser.move-tab",
+   "area": "browser",
+   "what": "Move the tab left or right",
+   "say": "move this tab to the right",
+   "tool": "key",
+   "target": "keyboard",
+   "today": "keyboard"
+  },
+  {
+   "id": "browser.reload",
+   "area": "browser",
+   "what": "Reload the page",
+   "say": "reload",
+   "tool": "key",
+   "target": "protocol",
+   "today": "protocol",
+   "note": "Over CDP or BiDi when the browser in front is the Setu profile; accessibility and keys otherwise."
+  },
+  {
+   "id": "browser.forward",
+   "area": "browser",
+   "what": "Go forward",
+   "say": "go forward",
+   "tool": "key",
+   "target": "protocol",
+   "today": "protocol",
+   "note": "Over CDP or BiDi when the browser in front is the Setu profile; accessibility and keys otherwise."
+  },
+  {
+   "id": "browser.back",
+   "area": "browser",
+   "what": "Go back in the browser",
+   "say": "go back",
+   "tool": "key",
+   "target": "protocol",
+   "today": "protocol",
+   "note": "Over CDP or BiDi when the browser in front is the Setu profile; accessibility and keys otherwise."
+  },
+  {
+   "id": "browser.open-link",
+   "area": "browser",
+   "what": "Open a link by its position",
+   "say": "open the third link",
+   "tool": "browser.page",
+   "target": "protocol",
+   "today": "protocol",
+   "note": "Over CDP or BiDi when the browser in front is the Setu profile; accessibility and keys otherwise."
+  },
+  {
+   "id": "browser.open-result",
+   "area": "browser",
+   "what": "Open a search result by its position",
+   "say": "open the second result",
+   "tool": "browser.page",
+   "target": "protocol",
+   "today": "protocol",
+   "note": "Over CDP or BiDi when the browser in front is the Setu profile; accessibility and keys otherwise."
+  },
+  {
+   "id": "browser.open-link-new-tab",
+   "area": "browser",
+   "what": "Open a link in a new tab",
+   "say": "open the third link in a new tab",
+   "tool": "browser.page",
+   "target": "protocol",
+   "today": "protocol",
+   "note": "Over CDP or BiDi when the browser in front is the Setu profile; accessibility and keys otherwise."
+  },
+  {
+   "id": "browser.find",
+   "area": "browser",
+   "what": "Find text on the page",
+   "say": "find pricing on this page",
+   "tool": "browser.page",
+   "target": "protocol",
+   "today": "protocol",
+   "note": "Over CDP or BiDi when the browser in front is the Setu profile; accessibility and keys otherwise."
+  },
+  {
+   "id": "browser.images",
+   "area": "browser",
+   "what": "Open the images tab of a results page",
+   "say": "open the images tab",
+   "tool": "page.vertical",
+   "target": "accessibility",
+   "today": "accessibility",
+   "note": "A link on the search page, found by its name through accessibility."
+  },
+  {
+   "id": "browser.bookmark",
+   "area": "browser",
+   "what": "Bookmark the page",
+   "say": "bookmark this page",
+   "tool": "browser.bookmark",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "browser.bookmarks",
+   "area": "browser",
+   "what": "Open the bookmarks",
+   "say": "open my bookmarks",
+   "tool": "browser.settings",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "browser.history",
+   "area": "browser",
+   "what": "Open the history",
+   "say": "show history",
+   "tool": "browser.settings",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "browser.settings",
+   "area": "browser",
+   "what": "Open the browser's settings",
+   "say": "open browser settings",
+   "tool": "browser.settings",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "browser.extensions",
+   "area": "browser",
+   "what": "Open the extensions page",
+   "say": "manage extensions",
+   "tool": "browser.settings",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "browser.clear-data",
+   "area": "browser",
+   "what": "Open clear browsing data",
+   "say": "clear browsing data",
+   "tool": "browser.settings",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "browser.private",
+   "area": "browser",
+   "what": "Open a private window",
+   "say": "open an incognito window",
+   "tool": "browser.window",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "browser.new-window",
+   "area": "browser",
+   "what": "Open a new window",
+   "say": "open a new window",
+   "tool": "browser.window",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "browser.profile-switch",
+   "area": "browser",
+   "what": "Choose a browser profile by voice",
+   "say": "switch profile",
+   "tool": "profiles.choose",
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "browser.profile-open",
+   "area": "browser",
+   "what": "Open a named profile",
+   "say": "switch to my work profile",
+   "tool": "profiles.open",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "browser.profile-create",
+   "area": "browser",
+   "what": "Create a browser profile",
+   "say": "create a new profile",
+   "tool": "profiles.create",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "browser.setu-profile",
+   "area": "browser",
+   "what": "Create the Setu profile and import the old ones",
+   "say": "set up the setu profile",
+   "tool": "browser.setup",
+   "target": "protocol",
+   "today": {
+    "linux": "protocol",
+    "windows": "protocol",
+    "macos": "protocol"
+   },
+   "note": "Asks first; the profile pop-ups and the import are still to come."
+  },
+  {
+   "id": "browser.download-current",
+   "area": "browser",
+   "what": "Download the file the page shows",
+   "say": "download this file",
+   "tool": "web.download_current",
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "browser.pdf",
+   "area": "browser",
+   "what": "Save the page as a PDF",
+   "say": "download this page as pdf",
+   "tool": "browser.capture",
+   "target": "protocol",
+   "today": {
+    "linux": "protocol",
+    "windows": "protocol",
+    "macos": "protocol"
+   },
+   "note": "Over the control pipe on the Setu profile; without it Setu offers to set it up. Windows and macOS are type-checked only."
+  },
+  {
+   "id": "browser.screenshot",
+   "area": "browser",
+   "what": "Take a picture of the page",
+   "say": "take a screenshot of this page",
+   "tool": "browser.capture",
+   "target": "protocol",
+   "today": {
+    "linux": "protocol",
+    "windows": "protocol",
+    "macos": "protocol"
+   },
+   "note": "Over the control pipe on the Setu profile; without it Setu offers to set it up. Windows and macOS are type-checked only."
+  },
+  {
+   "id": "browser.read-page",
+   "area": "browser",
+   "what": "Read the page aloud",
+   "say": "read this page",
+   "tool": "browser.read",
+   "target": "protocol",
+   "today": {
+    "linux": "protocol",
+    "windows": "protocol",
+    "macos": "protocol"
+   },
+   "note": "Over the control pipe on the Setu profile; without it Setu offers to set it up. Windows and macOS are type-checked only."
+  },
+  {
+   "id": "browser.summarise",
+   "area": "browser",
+   "what": "Summarise the page",
+   "say": "summarize this page",
+   "tool": "browser.summary",
+   "target": "protocol",
+   "today": "protocol"
+  },
+  {
+   "id": "browser.fill-form",
+   "area": "browser",
+   "what": "Fill a form on a page",
+   "say": "fill in this form",
+   "tool": "browser.form",
+   "target": "protocol",
+   "today": "protocol"
+  },
+  {
+   "id": "browser.permission",
+   "area": "browser",
+   "what": "Answer a site's permission pop-up",
+   "say": "allow notifications",
+   "tool": "browser.permission",
+   "target": "protocol",
+   "today": "protocol",
+   "note": "Setu answers the pop-up when it appears; there is no spoken rule for it."
+  },
+  {
+   "id": "browser.devtools",
+   "area": "browser",
+   "what": "Open DevTools",
+   "say": "open devtools",
+   "tool": "browser.fox",
+   "target": {
+    "linux": "protocol",
+    "windows": "protocol",
+    "macos": "protocol"
+   },
+   "today": {
+    "linux": "protocol",
+    "windows": "protocol",
+    "macos": "protocol"
+   }
+  },
+  {
+   "id": "browser.devtools-read",
+   "area": "browser",
+   "what": "Read what a DevTools panel shows",
+   "say": "what errors are in the console",
+   "tool": "browser.console",
+   "target": "protocol",
+   "today": {
+    "linux": "protocol",
+    "windows": "protocol",
+    "macos": "protocol"
+   },
+   "note": "Over the control pipe on the Setu profile; without it Setu offers to set it up. Windows and macOS are type-checked only."
+  },
+  {
+   "id": "browser.message-send",
+   "area": "browser",
+   "what": "Send a WhatsApp message",
+   "say": "send a message to binod saying hello",
+   "tool": "messages.send",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "browser.message-open",
+   "area": "browser",
+   "what": "Open a WhatsApp chat",
+   "say": "message binod",
+   "tool": "messages.open",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "browser.message-read",
+   "area": "browser",
+   "what": "Read a WhatsApp chat aloud",
+   "say": "what did binod say",
+   "tool": "messages.read",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "media.list",
+   "area": "media",
+   "what": "Say what is playing",
+   "say": "what's playing",
+   "tool": "media.list",
+   "target": "channel",
+   "today": {
+    "linux": "channel",
+    "windows": "channel",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "media.pause",
+   "area": "media",
+   "what": "Pause what is playing",
+   "say": "pause",
+   "tool": "media.pause",
+   "target": "channel",
+   "today": {
+    "linux": "channel",
+    "windows": "channel",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "media.pause-named",
+   "area": "media",
+   "what": "Pause one player by name",
+   "say": "pause spotify",
+   "tool": "media.pause",
+   "target": "channel",
+   "today": {
+    "linux": "channel",
+    "windows": "channel",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "media.resume",
+   "area": "media",
+   "what": "Resume",
+   "say": "resume spotify",
+   "tool": "media.play",
+   "target": "channel",
+   "today": {
+    "linux": "channel",
+    "windows": "channel",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "media.next",
+   "area": "media",
+   "what": "Next track",
+   "say": "next song on spotify",
+   "tool": "media.next",
+   "target": "channel",
+   "today": {
+    "linux": "channel",
+    "windows": "channel",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "media.previous",
+   "area": "media",
+   "what": "Previous track",
+   "say": "previous song",
+   "tool": "media.previous",
+   "target": "channel",
+   "today": {
+    "linux": "channel",
+    "windows": "channel",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "media.pause-all",
+   "area": "media",
+   "what": "Pause everything",
+   "say": "pause everything",
+   "tool": "media.pause",
+   "target": "channel",
+   "today": {
+    "linux": "channel",
+    "windows": "channel",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "media.pause-ordinal",
+   "area": "media",
+   "what": "Pause one of several by its position",
+   "say": "pause the second one",
+   "tool": "media.pause",
+   "target": "channel",
+   "today": {
+    "linux": "channel",
+    "windows": "channel",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "media.pause-except",
+   "area": "media",
+   "what": "Pause everything except one",
+   "say": "pause everything except spotify",
+   "tool": "media.pause",
+   "target": "channel",
+   "today": "channel"
+  },
+  {
+   "id": "media.play-song",
+   "area": "media",
+   "what": "Find a song and play it",
+   "say": "play despacito",
+   "tool": "web.play",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "media.mute-tab",
+   "area": "media",
+   "what": "Mute a browser tab",
+   "say": "mute this tab",
+   "tool": "media.mute",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "media.mute-app",
+   "area": "media",
+   "what": "Mute one app",
+   "say": "mute spotify",
+   "tool": "media.mute",
+   "target": "system",
+   "today": "system",
+   "phase": {
+    "windows": 16,
+    "macos": 16
+   },
+   "note": "The app's own audio stream: the sound server on Linux, its Core Audio session on Windows, a process tap on macOS (Windows and macOS type-checked)."
+  },
+  {
+   "id": "media.app-volume",
+   "area": "media",
+   "what": "Change one app's volume",
+   "say": "turn spotify down",
+   "tool": "media.volume",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "gap"
+   },
+   "phase": {
+    "windows": 16,
+    "macos": 16
+   },
+   "note": "Linux: the app's stream on the sound server. Windows: its Core Audio session volume (type-checked). macOS process taps can silence an app but not set its level."
+  },
+  {
+   "id": "media.seek",
+   "area": "media",
+   "what": "Skip forward or back in a track",
+   "say": "skip forward 30 seconds",
+   "tool": "media.seek",
+   "target": "channel",
+   "today": {
+    "linux": "channel",
+    "windows": "channel",
+    "macos": "gap"
+   },
+   "phase": {
+    "windows": 16,
+    "macos": 15
+   },
+   "note": "MPRIS Seek on Linux; the media session's TryChangePlaybackPositionAsync on Windows (type-checked). macOS has no public media-session API."
+  },
+  {
+   "id": "media.lyrics",
+   "area": "media",
+   "what": "Show the lyrics",
+   "say": "show the lyrics",
+   "tool": "media.lyrics",
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "media.list-all",
+   "area": "media",
+   "what": "List every tab, app and window that is making sound",
+   "say": "what is making sound",
+   "tool": "media.list",
+   "target": "channel",
+   "today": "channel",
+   "phase": {
+    "windows": 16,
+    "macos": 16
+   },
+   "note": "Every app's output stream (sound server, Core Audio sessions, process taps) beside the media sessions."
+  },
+  {
+   "id": "media.show",
+   "area": "media",
+   "what": "Open the sound list in the notch",
+   "say": "show audio",
+   "tool": "media.list",
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "media.pause-tab",
+   "area": "media",
+   "what": "Pause one sounding tab among several",
+   "say": "pause the youtube tab",
+   "tool": "media.pause",
+   "target": "protocol",
+   "today": {
+    "linux": "protocol",
+    "windows": "protocol",
+    "macos": "protocol"
+   },
+   "note": "With the Setu profile, one tab's media is paused over the control pipe."
+  },
+  {
+   "id": "media.mute-stream",
+   "area": "media",
+   "what": "Mute an app that has no media session",
+   "say": "mute the game",
+   "tool": "media.mute",
+   "target": "system",
+   "today": "system",
+   "phase": {
+    "windows": 16,
+    "macos": 16
+   }
+  },
+  {
+   "id": "media.output",
+   "area": "media",
+   "what": "Switch the sound output device",
+   "say": "switch audio output to headphones",
+   "tool": "sys.output",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "gap",
+    "macos": "gap"
+   },
+   "phase": {
+    "windows": 12,
+    "macos": 12
+   }
+  },
+  {
+   "id": "system.extensions",
+   "area": "system",
+   "what": "Turn a desktop extension on or off",
+   "say": "turn off the dash to dock extension",
+   "tool": "shell.extension",
+   "target": {
+    "linux": "channel",
+    "windows": "out",
+    "macos": "out"
+   },
+   "today": {
+    "linux": "channel",
+    "windows": "out",
+    "macos": "out"
+   },
+   "note": "GNOME Shell's own extension interface. Windows and macOS have no desktop extensions."
+  },
+  {
+   "id": "system.volume-set",
+   "area": "system",
+   "what": "Set the volume",
+   "say": "set the volume to 40",
+   "tool": "volume",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 12
+   }
+  },
+  {
+   "id": "system.volume-up",
+   "area": "system",
+   "what": "Turn the volume up or down",
+   "say": "volume up",
+   "tool": "volume",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 12
+   }
+  },
+  {
+   "id": "system.mute",
+   "area": "system",
+   "what": "Mute the sound",
+   "say": "mute",
+   "tool": "volume",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 12
+   }
+  },
+  {
+   "id": "system.brightness-set",
+   "area": "system",
+   "what": "Set the screen brightness",
+   "say": "set brightness to 50",
+   "tool": "brightness",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "command",
+    "macos": "gap"
+   },
+   "phase": 12
+  },
+  {
+   "id": "system.brightness-up",
+   "area": "system",
+   "what": "Make the screen brighter or dimmer",
+   "say": "brighter",
+   "tool": "brightness",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "command",
+    "macos": "gap"
+   },
+   "phase": 12
+  },
+  {
+   "id": "system.wifi-connect",
+   "area": "system",
+   "what": "Join a Wi-Fi network",
+   "say": "connect to wifi",
+   "tool": "wifi",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "gap"
+   },
+   "phase": 12,
+   "note": "NetworkManager on Linux; the WLAN API on Windows (wlanapi: scan, profile, connect, disconnect; type-checked). macOS CoreWLAN is not built."
+  },
+  {
+   "id": "system.wifi-disconnect",
+   "area": "system",
+   "what": "Leave the Wi-Fi network",
+   "say": "disconnect from wifi",
+   "tool": "wifi",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "gap"
+   },
+   "phase": 12,
+   "note": "NetworkManager on Linux; the WLAN API on Windows (wlanapi: scan, profile, connect, disconnect; type-checked). macOS CoreWLAN is not built."
+  },
+  {
+   "id": "system.wifi-list",
+   "area": "system",
+   "what": "List Wi-Fi networks",
+   "say": "show wifi networks",
+   "tool": "wifi",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "gap"
+   },
+   "phase": 12,
+   "note": "NetworkManager on Linux; the WLAN API on Windows (wlanapi: scan, profile, connect, disconnect; type-checked). macOS CoreWLAN is not built."
+  },
+  {
+   "id": "system.wifi-on",
+   "area": "system",
+   "what": "Turn Wi-Fi on",
+   "say": "turn on wifi",
+   "tool": "sys.toggle",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 12
+   }
+  },
+  {
+   "id": "system.bluetooth-on",
+   "area": "system",
+   "what": "Turn Bluetooth on or off",
+   "say": "turn on bluetooth",
+   "tool": "sys.toggle",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "gap"
+   },
+   "phase": {
+    "macos": 12
+   }
+  },
+  {
+   "id": "system.bluetooth-connect",
+   "area": "system",
+   "what": "Connect a Bluetooth device",
+   "say": "connect to my headphones",
+   "tool": "sys.bt",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "gap"
+   },
+   "phase": {
+    "windows": 12,
+    "macos": 12
+   },
+   "note": "BlueZ on Linux; on Windows the paired device's audio and input services are switched on or off with BluetoothSetServiceState (type-checked)."
+  },
+  {
+   "id": "system.night-light",
+   "area": "system",
+   "what": "Turn night light on or off",
+   "say": "turn on night light",
+   "tool": "sys.toggle",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "gap",
+    "macos": "gap"
+   },
+   "phase": {
+    "windows": 12,
+    "macos": 12
+   },
+   "note": "Windows has no API for Night light; it keeps the setting in an undocumented binary blob, so Setu opens its page in Settings."
+  },
+  {
+   "id": "system.dark-mode",
+   "area": "system",
+   "what": "Switch dark mode",
+   "say": "turn on dark mode",
+   "tool": "sys.toggle",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 12
+   }
+  },
+  {
+   "id": "system.resolution",
+   "area": "system",
+   "what": "Change the screen resolution or scale",
+   "say": "change the resolution",
+   "tool": "sys.display",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "gap"
+   },
+   "phase": {
+    "macos": 12
+   }
+  },
+  {
+   "id": "system.dnd",
+   "area": "system",
+   "what": "Turn do not disturb on or off",
+   "say": "turn on do not disturb",
+   "tool": "sys.toggle",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "gap",
+    "macos": "gap"
+   },
+   "phase": {
+    "windows": 12,
+    "macos": 12
+   },
+   "note": "Windows has no API for Do not disturb or Focus assist; Setu opens its page in Settings."
+  },
+  {
+   "id": "system.lock",
+   "area": "system",
+   "what": "Lock the screen",
+   "say": "lock the screen",
+   "tool": "system.lock",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 12
+   },
+   "note": "Linux: the desktop's screen saver over D-Bus, else logind. Windows: LockWorkStation. macOS presses Control+Command+Q through osascript until Phase 12."
+  },
+  {
+   "id": "system.sleep",
+   "area": "system",
+   "what": "Put the PC to sleep",
+   "say": "put the computer to sleep",
+   "tool": "sys.power",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 12
+   }
+  },
+  {
+   "id": "system.restart",
+   "area": "system",
+   "what": "Restart the PC",
+   "say": "restart the computer",
+   "tool": "sys.power",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 12
+   }
+  },
+  {
+   "id": "system.shutdown",
+   "area": "system",
+   "what": "Shut the PC down",
+   "say": "shut down",
+   "tool": "sys.power",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 12
+   }
+  },
+  {
+   "id": "system.logout",
+   "area": "system",
+   "what": "Log out",
+   "say": "log out",
+   "tool": "sys.power",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 12
+   }
+  },
+  {
+   "id": "system.battery",
+   "area": "system",
+   "what": "Say how much battery is left",
+   "say": "how much battery is left",
+   "tool": "sys.battery",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 12
+   }
+  },
+  {
+   "id": "system.battery-saver",
+   "area": "system",
+   "what": "Turn battery saver on or off",
+   "say": "turn on battery saver",
+   "tool": "sys.profile",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "gap"
+   },
+   "phase": {
+    "macos": 12
+   }
+  },
+  {
+   "id": "system.time",
+   "area": "system",
+   "what": "Say the time",
+   "say": "what time is it",
+   "tool": "time",
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "system.date",
+   "area": "system",
+   "what": "Say the date",
+   "say": "what's the date",
+   "tool": "date",
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "system.timer",
+   "area": "system",
+   "what": "Set a timer",
+   "say": "set a timer for 5 minutes",
+   "tool": "board.timer",
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "system.reminder",
+   "area": "system",
+   "what": "Set a reminder",
+   "say": "remind me to call papa at 5",
+   "tool": "board.remind",
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "system.stopwatch",
+   "area": "system",
+   "what": "Start a stopwatch",
+   "say": "start a stopwatch",
+   "tool": "board.stopwatch",
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "system.screenshot",
+   "area": "system",
+   "what": "Take a screenshot",
+   "say": "take a screenshot",
+   "tool": "key",
+   "target": "keyboard",
+   "today": {
+    "linux": "keyboard",
+    "windows": "keyboard",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "system.screen-record",
+   "area": "system",
+   "what": "Record the screen",
+   "say": "record the screen",
+   "tool": "key",
+   "target": "keyboard",
+   "today": "keyboard"
+  },
+  {
+   "id": "system.clipboard",
+   "area": "system",
+   "what": "Say what is on the clipboard",
+   "say": "what's on my clipboard",
+   "tool": "sys.clipboard",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 12
+   }
+  },
+  {
+   "id": "system.notifications",
+   "area": "system",
+   "what": "Read or clear notifications",
+   "say": "read my notifications",
+   "tool": "sys.notifications",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "gap",
+    "macos": "gap"
+   },
+   "phase": {
+    "windows": 12,
+    "macos": 12
+   },
+   "note": "Windows lets only packaged apps read notifications (UserNotificationListener needs package identity)."
+  },
+  {
+   "id": "system.default-app",
+   "area": "system",
+   "what": "Set a default app",
+   "say": "set firefox as my default browser",
+   "tool": "sys.default",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "gap",
+    "macos": "gap"
+   },
+   "phase": {
+    "windows": 12,
+    "macos": 12
+   },
+   "note": "Windows protects default apps from programs on purpose (a signed hash in UserChoice); Setu opens the app's page in Default apps."
+  },
+  {
+   "id": "system.open-settings",
+   "area": "system",
+   "what": "Open the system settings app",
+   "say": "open settings",
+   "tool": "open_app",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "command",
+    "macos": "command"
+   },
+   "phase": {
+    "windows": 12,
+    "macos": 12
+   }
+  },
+  {
+   "id": "system.updates",
+   "area": "system",
+   "what": "Check for and install system updates",
+   "say": "check for updates",
+   "tool": "sys.updates",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 12
+   }
+  },
+  {
+   "id": "system.clean-up",
+   "area": "system",
+   "what": "Free up disk space",
+   "say": "free up space",
+   "tool": "sys.space",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "system"
+   },
+   "note": "Setu only says how much is free."
+  },
+  {
+   "id": "system.printer",
+   "area": "system",
+   "what": "Add a printer",
+   "say": "add a printer",
+   "tool": "sys.printers",
+   "target": "system",
+   "today": {
+    "linux": "command",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "linux": 12,
+    "macos": 12
+   }
+  },
+  {
+   "id": "system.keyboard-layout",
+   "area": "system",
+   "what": "Change the keyboard layout",
+   "say": "change the keyboard layout",
+   "tool": "key",
+   "target": "keyboard",
+   "today": {
+    "linux": "keyboard",
+    "windows": "keyboard",
+    "macos": "keyboard"
+   }
+  },
+  {
+   "id": "system.airplane",
+   "area": "system",
+   "what": "Turn airplane mode on or off",
+   "say": "turn on airplane mode",
+   "tool": "sys.toggle",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 12
+   }
+  },
+  {
+   "id": "system.hotspot",
+   "area": "system",
+   "what": "Turn the hotspot on or off",
+   "say": "turn on the hotspot",
+   "tool": "sys.toggle",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "gap"
+   },
+   "phase": {
+    "windows": 12,
+    "macos": 12
+   },
+   "note": "NetworkManager on Linux; Windows' tethering manager for the internet connection (type-checked)."
+  },
+  {
+   "id": "system.vpn",
+   "area": "system",
+   "what": "Connect a VPN",
+   "say": "connect to the vpn",
+   "tool": "sys.vpn",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "command",
+    "macos": "command"
+   },
+   "phase": {
+    "windows": 12,
+    "macos": 12
+   }
+  },
+  {
+   "id": "system.ip",
+   "area": "system",
+   "what": "Say the IP address",
+   "say": "what's my ip address",
+   "tool": "sys.ip",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "system"
+   }
+  },
+  {
+   "id": "system.startup",
+   "area": "system",
+   "what": "Choose which apps start with the PC",
+   "say": "stop spotify opening at startup",
+   "tool": "sys.startup",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 12
+   }
+  },
+  {
+   "id": "system.qr",
+   "area": "system",
+   "what": "Read a QR code with the camera",
+   "say": "scan the qr code",
+   "tool": "scan_qr",
+   "target": "system",
+   "today": "system",
+   "phase": 12,
+   "note": "The camera through V4L2 on Linux, Media Foundation on Windows, AVFoundation on macOS, decoded in Setu (Windows and macOS type-checked)."
+  },
+  {
+   "id": "system.mic-mute",
+   "area": "system",
+   "what": "Stop Setu listening for a while",
+   "say": "mute the microphone",
+   "tool": "mute_mic",
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "system.services",
+   "area": "system",
+   "what": "Start or stop a system service",
+   "say": "restart the bluetooth service",
+   "tool": "admin.run",
+   "target": "service",
+   "today": "service",
+   "phase": 13
+  },
+  {
+   "id": "system.users",
+   "area": "system",
+   "what": "Add or remove a user account",
+   "say": "add a user called guest",
+   "tool": "admin.run",
+   "target": "service",
+   "today": "service",
+   "phase": 13
+  },
+  {
+   "id": "system.firewall",
+   "area": "system",
+   "what": "Change the firewall",
+   "say": "turn on the firewall",
+   "tool": "admin.run",
+   "target": "service",
+   "today": {
+    "linux": "service",
+    "windows": "service",
+    "macos": "service"
+   },
+   "phase": 13
+  },
+  {
+   "id": "coding.open-project",
+   "area": "coding",
+   "what": "Open a project in the code editor",
+   "say": "open my project in vs code",
+   "tool": "code.open",
+   "target": "channel",
+   "today": "channel"
+  },
+  {
+   "id": "coding.new-project",
+   "area": "coding",
+   "what": "Create a project",
+   "say": "create a new python project called weather app",
+   "tool": "code.project",
+   "target": "channel",
+   "today": "channel"
+  },
+  {
+   "id": "coding.new-file",
+   "area": "coding",
+   "what": "Create a code file",
+   "say": "create a new file called main.py",
+   "tool": "files.create",
+   "target": "system",
+   "today": "system"
+  },
+  {
+   "id": "coding.goto",
+   "area": "coding",
+   "what": "Go to a line",
+   "say": "go to line 40",
+   "tool": "code.goto",
+   "target": "channel",
+   "today": "channel"
+  },
+  {
+   "id": "coding.run",
+   "area": "coding",
+   "what": "Run the program",
+   "say": "run the program",
+   "tool": "code.run",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "coding.build",
+   "area": "coding",
+   "what": "Build the project",
+   "say": "build the project",
+   "tool": "code.build",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "coding.check",
+   "area": "coding",
+   "what": "Check the code for problems",
+   "say": "check my code",
+   "tool": "code.check",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "coding.format",
+   "area": "coding",
+   "what": "Run an editor command",
+   "say": "format the document",
+   "tool": "code.command",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "coding.extension",
+   "area": "coding",
+   "what": "Install an editor extension",
+   "say": "install the prettier extension",
+   "tool": "code.extension",
+   "target": "channel",
+   "today": "channel"
+  },
+  {
+   "id": "coding.setting",
+   "area": "coding",
+   "what": "Change an editor setting",
+   "say": "turn on word wrap",
+   "tool": "code.setting",
+   "target": "system",
+   "today": "system"
+  },
+  {
+   "id": "coding.dictate",
+   "area": "coding",
+   "what": "Dictate code",
+   "say": "start coding",
+   "tool": "code.dictate",
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "coding.write",
+   "area": "coding",
+   "what": "Have Setu write code",
+   "say": "write a function that reverses a string",
+   "tool": "code.write",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "coding.comment",
+   "area": "coding",
+   "what": "Add a comment",
+   "say": "add a comment saying this adds two numbers",
+   "tool": "code.comment",
+   "target": "accessibility",
+   "today": "accessibility"
+  },
+  {
+   "id": "coding.git-status",
+   "area": "coding",
+   "what": "Check Git",
+   "say": "git status",
+   "tool": "git.status",
+   "target": "channel",
+   "today": "channel"
+  },
+  {
+   "id": "coding.git-commit",
+   "area": "coding",
+   "what": "Commit",
+   "say": "commit everything",
+   "tool": "git.commit",
+   "target": "channel",
+   "today": "channel"
+  },
+  {
+   "id": "coding.git-push",
+   "area": "coding",
+   "what": "Push",
+   "say": "git push",
+   "tool": "git.push",
+   "target": "channel",
+   "today": "channel"
+  },
+  {
+   "id": "coding.git-pull",
+   "area": "coding",
+   "what": "Pull",
+   "say": "pull the latest changes",
+   "tool": "git.pull",
+   "target": "channel",
+   "today": "channel"
+  },
+  {
+   "id": "coding.git-branch",
+   "area": "coding",
+   "what": "Create a branch",
+   "say": "create a branch called feature",
+   "tool": "git.branch",
+   "target": "channel",
+   "today": "channel"
+  },
+  {
+   "id": "coding.terminal",
+   "area": "coding",
+   "what": "Run a command in a terminal",
+   "say": "run npm install in the terminal",
+   "tool": "terminal.run",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "setu.show",
+   "area": "setu",
+   "what": "Open Setu's window",
+   "say": "show yourself",
+   "tool": "open_app",
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "setu.hide",
+   "area": "setu",
+   "what": "Close Setu's window",
+   "say": "hide yourself",
+   "tool": "close_app",
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "setu.settings",
+   "area": "setu",
+   "what": "Open Setu's settings",
+   "say": "open your settings",
+   "tool": "open_app",
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "setu.remember",
+   "area": "setu",
+   "what": "Remember a fact",
+   "say": "remember that my wifi password is under the router",
+   "tool": "memory.add",
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "setu.recall",
+   "area": "setu",
+   "what": "Say what Setu remembers",
+   "say": "what do you remember",
+   "tool": "memory.list",
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "setu.forget",
+   "area": "setu",
+   "what": "Forget a fact",
+   "say": "forget that",
+   "tool": "memory.forget",
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "setu.todo-add",
+   "area": "setu",
+   "what": "Add to the to-do list",
+   "say": "add buy milk to my to do list",
+   "tool": "board.todo",
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "setu.todo-list",
+   "area": "setu",
+   "what": "Show the to-do list",
+   "say": "show my to do list",
+   "tool": "board.todo",
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "setu.note",
+   "area": "setu",
+   "what": "Keep a note",
+   "say": "make a note that the meeting moved",
+   "tool": "board.note",
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "setu.stop",
+   "area": "setu",
+   "what": "Stop what Setu is doing",
+   "say": "stop",
+   "tool": "cancel",
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "setu.repeat",
+   "area": "setu",
+   "what": "Repeat the last answer",
+   "say": "repeat that",
+   "tool": "repeat",
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "setu.correct",
+   "area": "setu",
+   "what": "Correct what Setu heard",
+   "say": "no i said firefox",
+   "tool": "correct",
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "setu.undo",
+   "area": "setu",
+   "what": "Undo the last action",
+   "say": "undo",
+   "tool": "undo",
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "setu.sleep",
+   "area": "setu",
+   "what": "Send Setu to sleep",
+   "say": "go to sleep",
+   "tool": "sleep",
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "setu.jobs",
+   "area": "setu",
+   "what": "Say what Setu is working on",
+   "say": "what are you doing",
+   "tool": "jobs.status",
+   "target": "setu",
+   "today": {
+    "linux": "setu",
+    "windows": "setu",
+    "macos": "setu"
+   }
+  },
+  {
+   "id": "installs.known",
+   "area": "installs",
+   "what": "Install an app from the system's package manager",
+   "say": "install gimp",
+   "tool": "install_app",
+   "target": "channel",
+   "today": "channel"
+  },
+  {
+   "id": "installs.download-word",
+   "area": "installs",
+   "what": "Install an app when the user says download",
+   "say": "download vlc",
+   "tool": "install_app",
+   "target": "channel",
+   "today": "channel"
+  },
+  {
+   "id": "installs.uninstall",
+   "area": "installs",
+   "what": "Remove an app",
+   "say": "uninstall gimp",
+   "tool": "jobs.uninstall",
+   "target": "channel",
+   "today": {
+    "linux": "system",
+    "windows": "command",
+    "macos": "command"
+   },
+   "phase": {
+    "linux": 18,
+    "windows": 18,
+    "macos": 18
+   }
+  },
+  {
+   "id": "installs.update",
+   "area": "installs",
+   "what": "Update installed apps",
+   "say": "update my apps",
+   "tool": "jobs.update",
+   "target": "channel",
+   "today": {
+    "linux": "command",
+    "windows": "command",
+    "macos": "command"
+   },
+   "phase": {
+    "linux": 18,
+    "windows": 18,
+    "macos": 18
+   }
+  },
+  {
+   "id": "installs.web",
+   "area": "installs",
+   "what": "Install an app from its maker's website",
+   "say": "download steam from the website",
+   "tool": "jobs.web",
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "system",
+    "macos": "system"
+   },
+   "note": "The rules read from the website as part of the app's name."
+  },
+  {
+   "id": "installs.folder",
+   "area": "installs",
+   "what": "Choose the install folder by voice",
+   "say": "install it in d games",
+   "tool": "jobs.folder",
+   "target": {
+    "linux": "setu",
+    "windows": "system",
+    "macos": "system"
+   },
+   "today": {
+    "linux": "setu",
+    "windows": "system",
+    "macos": "system"
+   },
+   "note": "The rules read this as an app called it in d games."
+  },
+  {
+   "id": "installs.save-where",
+   "area": "installs",
+   "what": "Choose the download folder by voice",
+   "say": "save it in downloads",
+   "tool": "jobs.folder",
+   "target": "setu",
+   "today": {
+    "linux": "setu",
+    "windows": "setu",
+    "macos": "setu"
+   }
+  },
+  {
+   "id": "installs.progress",
+   "area": "installs",
+   "what": "Say how far a download or install has got",
+   "say": "how much is done",
+   "tool": "jobs.status",
+   "target": "setu",
+   "today": {
+    "linux": "setu",
+    "windows": "setu",
+    "macos": "setu"
+   }
+  },
+  {
+   "id": "installs.pause",
+   "area": "installs",
+   "what": "Pause or cancel a download",
+   "say": "pause the download",
+   "tool": "jobs.pause",
+   "target": "setu",
+   "today": {
+    "linux": "setu",
+    "windows": "setu",
+    "macos": "setu"
+   },
+   "note": "The rules read this as pausing a player called download."
+  },
+  {
+   "id": "installs.cancel",
+   "area": "installs",
+   "what": "Cancel an install",
+   "say": "cancel the install",
+   "tool": "jobs.cancel",
+   "target": "setu",
+   "today": {
+    "linux": "setu",
+    "windows": "setu",
+    "macos": "setu"
+   }
+  },
+  {
+   "id": "installs.verify",
+   "area": "installs",
+   "what": "Check the publisher's signature before running an installer",
+   "say": null,
+   "tool": null,
+   "target": "system",
+   "today": {
+    "linux": "command",
+    "windows": "system",
+    "macos": "command"
+   },
+   "phase": {
+    "linux": 18,
+    "macos": 18
+   }
+  },
+  {
+   "id": "installs.wizard",
+   "area": "installs",
+   "what": "Drive a setup window to the end",
+   "say": "go through the setup",
+   "tool": "jobs.setup",
+   "target": "accessibility",
+   "today": "accessibility",
+   "note": "Reads each setup page through accessibility: licence asked about first, bundled extras unticked, the chosen folder typed, the window close button and restart prompts never pressed. Elevated installers on Windows need the Phase 13 helper (VM)."
+  },
+  {
+   "id": "installs.notify",
+   "area": "installs",
+   "what": "Say when a download has finished",
+   "say": null,
+   "tool": null,
+   "target": "setu",
+   "today": {
+    "linux": "setu",
+    "windows": "setu",
+    "macos": "setu"
+   }
+  },
+  {
+   "id": "installs.ring",
+   "area": "installs",
+   "what": "Show a progress ring in the notch",
+   "say": null,
+   "tool": null,
+   "target": "setu",
+   "today": {
+    "linux": "setu",
+    "windows": "setu",
+    "macos": "setu"
+   }
+  },
+  {
+   "id": "passwords.spell",
+   "area": "passwords",
+   "what": "Spell a password letter by letter",
+   "say": "type my password",
+   "tool": "ui.secret",
+   "target": "keyboard",
+   "today": {
+    "linux": "keyboard",
+    "windows": "keyboard",
+    "macos": "command"
+   },
+   "phase": {
+    "macos": 15
+   }
+  },
+  {
+   "id": "passwords.face-register",
+   "area": "passwords",
+   "what": "Register the user's face",
+   "say": "register my face",
+   "tool": "face.enrol",
+   "target": "setu",
+   "today": "setu",
+   "phase": {
+    "windows": 17,
+    "macos": 17
+   },
+   "note": "Setu's own camera: V4L2 on Linux, Media Foundation on Windows, AVFoundation on macOS (Windows and macOS type-checked; their live runs are the VM and the Mac checklist)."
+  },
+  {
+   "id": "passwords.voice-key",
+   "area": "passwords",
+   "what": "Use the voice as a second key",
+   "say": null,
+   "tool": null,
+   "target": "setu",
+   "today": "setu"
+  },
+  {
+   "id": "passwords.lock-unlock",
+   "area": "passwords",
+   "what": "Unlock the lock screen when Setu sees the user",
+   "say": null,
+   "tool": null,
+   "target": "system",
+   "today": {
+    "linux": "system",
+    "windows": "service",
+    "macos": "gap"
+   },
+   "phase": {
+    "windows": 17,
+    "macos": 17
+   },
+   "note": "Linux: when the lock screen is woken (key, mouse or opening the lid), Setu checks the face and asks logind to unlock the session. Windows: Setu's credential provider on the lock screen runs the face check and hands Windows the sealed password (type-checked, live run in the VM). macOS is not built."
+  },
+  {
+   "id": "passwords.signin-unlock",
+   "area": "passwords",
+   "what": "Sign in after a restart when Setu sees the user",
+   "say": null,
+   "tool": null,
+   "target": "service",
+   "today": {
+    "linux": "service",
+    "windows": "service",
+    "macos": "gap"
+   },
+   "phase": {
+    "windows": 17,
+    "macos": 17
+   },
+   "note": "Linux: a PAM module asks the root-side service, which runs the camera and the face check itself and fills the sealed system password, with no name to pick at GDM. Windows: Setu's credential provider watches for any enrolled person from the sign-in screen and hands Windows the sealed password (type-checked, live run in the VM). macOS: out of reach before login with FileVault on."
+  },
+  {
+   "id": "passwords.admin-prompt",
+   "area": "passwords",
+   "what": "Fill an admin prompt from the vault",
+   "say": null,
+   "tool": null,
+   "target": "service",
+   "today": {
+    "linux": "service",
+    "windows": "gap",
+    "macos": "accessibility"
+   },
+   "phase": {
+    "windows": 17
+   },
+   "note": "Linux: sudo and polkit through the PAM module, face plus a nod. macOS: \"type my password\" types the vault password into the focused authorisation dialog after a face check. Windows: the secure-desktop helper exists, filling from the vault is not built."
+  },
+  {
+   "id": "passwords.vault-save",
+   "area": "passwords",
+   "what": "Save a password in the vault",
+   "say": "save this password",
+   "tool": "vault.save",
+   "target": "setu",
+   "today": {
+    "linux": "setu",
+    "windows": "setu",
+    "macos": "setu"
+   }
+  },
+  {
+   "id": "passwords.vault-show",
+   "area": "passwords",
+   "what": "Show a saved password",
+   "say": "show my google password",
+   "tool": "vault.show",
+   "target": "setu",
+   "today": {
+    "linux": "setu",
+    "windows": "setu",
+    "macos": "setu"
+   }
+  },
+  {
+   "id": "passwords.web-signin",
+   "area": "passwords",
+   "what": "Sign in to a website from the vault",
+   "say": "sign in to google",
+   "tool": "web.open",
+   "target": "protocol",
+   "today": {
+    "linux": "protocol",
+    "windows": "protocol",
+    "macos": "protocol"
+   },
+   "note": "With a password for the site in the vault, the same words go to vault.signin: a face check, then the address and password are filled through CDP or BiDi, only on that site's own pages. With none saved, Setu opens the sign-in page."
+  },
+  {
+   "id": "passwords.account-pick",
+   "area": "passwords",
+   "what": "Choose between several accounts by voice",
+   "say": null,
+   "tool": null,
+   "target": "setu",
+   "today": {
+    "linux": "setu",
+    "windows": "setu",
+    "macos": "setu"
+   },
+   "note": "With several accounts for a site, Setu asks which one and takes the answer by voice or click; \"sign in to google with my work account\" picks it in the request (vault.rs unit test, needs saved entries so it is not routed here)."
+  },
+  {
+   "id": "passwords.mail-create",
+   "area": "passwords",
+   "what": "Create a mail account and save it",
+   "say": "create a new gmail account",
+   "tool": "vault.signup",
+   "target": "protocol",
+   "today": "protocol"
+  },
+  {
+   "id": "secure.admin-window",
+   "area": "secure",
+   "what": "Control a window that runs as administrator",
+   "say": null,
+   "tool": null,
+   "target": {
+    "linux": "keyboard",
+    "windows": "service",
+    "macos": "service"
+   },
+   "today": {
+    "linux": "keyboard",
+    "windows": "service",
+    "macos": "gap"
+   },
+   "phase": {
+    "macos": 17
+   }
+  },
+  {
+   "id": "secure.uac",
+   "area": "secure",
+   "what": "Answer an admin prompt on the secure desktop",
+   "say": null,
+   "tool": null,
+   "target": "service",
+   "today": {
+    "linux": "service",
+    "windows": "service",
+    "macos": "gap"
+   },
+   "phase": {
+    "macos": 17
+   }
+  },
+  {
+   "id": "secure.lock-screen",
+   "area": "secure",
+   "what": "Type on the lock screen",
+   "say": null,
+   "tool": null,
+   "target": {
+    "linux": "keyboard",
+    "windows": "service",
+    "macos": "service"
+   },
+   "today": {
+    "linux": "keyboard",
+    "windows": "service",
+    "macos": "gap"
+   },
+   "phase": {
+    "macos": 17
+   }
+  },
+  {
+   "id": "secure.admin-action",
+   "area": "secure",
+   "what": "Carry out an action that needs admin rights",
+   "say": null,
+   "tool": "admin.run",
+   "target": "service",
+   "today": "service",
+   "phase": 13
+  },
+  {
+   "id": "preboot.bios",
+   "area": "preboot",
+   "what": "Open the BIOS or UEFI setup",
+   "say": null,
+   "tool": null,
+   "target": "out",
+   "today": "out"
+  },
+  {
+   "id": "preboot.boot-menu",
+   "area": "preboot",
+   "what": "Choose a boot device",
+   "say": null,
+   "tool": null,
+   "target": "out",
+   "today": "out"
+  },
+  {
+   "id": "preboot.disk-pin",
+   "area": "preboot",
+   "what": "Enter the disk-encryption PIN",
+   "say": null,
+   "tool": null,
+   "target": "out",
+   "today": "out"
+  }
+ ]
+}

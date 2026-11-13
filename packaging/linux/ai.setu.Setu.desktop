@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Setu
+GenericName=Voice assistant
+Comment=Control this computer by voice
+Exec=setu-ui
+Icon=ai.setu.Setu
+Terminal=false
+Categories=Utility;Accessibility;
+Keywords=voice;speech;assistant;accessibility;hands-free;
+StartupNotify=true
+StartupWMClass=setu-ui
+X-GNOME-UsesNotifications=true

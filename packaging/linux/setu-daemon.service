@@ -1,0 +1,15 @@
+[Unit]
+Description=Setu voice assistant service
+Documentation=file:///usr/share/doc/setu/README.md
+After=pipewire.service pipewire-pulse.service wireplumber.service
+Wants=pipewire-pulse.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/setu-daemon
+Restart=on-failure
+RestartSec=1
+KillMode=process
+
+[Install]
+WantedBy=default.target

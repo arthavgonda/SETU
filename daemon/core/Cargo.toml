@@ -1,0 +1,116 @@
+[package]
+name = "setu-daemon"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "setu-daemon"
+path = "src/main.rs"
+
+[dependencies]
+setu-common = { path = "../common" }
+setu-sherpa = { path = "../sherpa" }
+setu-audio = { path = "../audio" }
+setu-face = { path = "../face" }
+serde.workspace = true
+serde_json.workspace = true
+anyhow.workspace = true
+libc.workspace = true
+crossbeam-channel.workspace = true
+log = { version = "0.4", features = ["std"] }
+tokio = { version = "1", features = ["rt-multi-thread", "net", "io-util", "io-std", "sync", "time", "macros", "signal", "process", "fs"] }
+rusqlite = { version = "0.37", features = ["bundled"] }
+ureq = { version = "3", default-features = false, features = ["rustls", "json"] }
+sha2 = "0.10"
+bzip2 = "0.6"
+tar = "0.4"
+base64 = "0.22"
+ed25519-dalek = "2"
+jiff = "0.2"
+strsim = "0.11"
+dirs = "6"
+fastrand = "2"
+sysinfo = { version = "0.37", default-features = false, features = ["system", "disk"] }
+rqrr = "0.10"
+zune-jpeg = "0.5"
+jpeg-encoder = "0.6"
+tempfile = "3"
+tokio-tungstenite = { version = "0.30", default-features = false, features = ["connect", "handshake"] }
+futures-util = { version = "0.3", default-features = false, features = ["sink", "std"] }
+zip = { version = "2", default-features = false, features = ["deflate"] }
+flate2 = { version = "1", default-features = false, features = ["rust_backend"] }
+png = "0.17"
+ring = "0.17"
+
+[target.'cfg(target_os = "linux")'.dependencies]
+zbus = { version = "5", default-features = false, features = ["tokio"] }
+notify = { version = "8", default-features = false }
+v4l = "0.14"
+libpulse-binding = "2.30"
+
+[target.'cfg(not(target_os = "linux"))'.dependencies]
+keyring = { version = "3", features = ["apple-native", "windows-native"] }
+
+[target.'cfg(windows)'.dependencies]
+windows = { version = "0.61", features = [
+    "Devices_Radios",
+    "Foundation_Collections",
+    "Win32_System_Power",
+    "Win32_System_Registry",
+    "Win32_System_Diagnostics_ToolHelp",
+    "Win32_System_UpdateAgent",
+    "Win32_Graphics_Printing",
+    "Win32_Security_WinTrust",
+    "Win32_Storage_Xps",
+    "Win32_Security_Cryptography",
+    "Foundation",
+    "Media_Control",
+    "Win32_Foundation",
+    "Win32_Graphics_Dwm",
+    "Win32_Graphics_Gdi",
+    "Win32_Media_Audio",
+    "Win32_Media_Audio_Endpoints",
+    "Win32_System_Com",
+    "Win32_System_Com_StructuredStorage",
+    "Win32_System_DataExchange",
+    "Win32_System_LibraryLoader",
+    "Win32_System_Memory",
+    "Win32_System_Ole",
+    "Win32_System_Variant",
+    "Win32_System_Threading",
+    "Win32_System_Shutdown",
+    "Win32_System_Pipes",
+    "Win32_Storage_FileSystem",
+    "Storage_Streams",
+    "Win32_UI_Shell",
+    "Win32_UI_Shell_Common",
+    "Win32_Security",
+    "Win32_Security_Authorization",
+    "Win32_UI_Accessibility",
+    "Win32_UI_HiDpi",
+    "Win32_UI_Input_KeyboardAndMouse",
+    "Win32_UI_WindowsAndMessaging",
+    "Security_Credentials_UI",
+    "Win32_NetworkManagement_WiFi",
+    "Win32_Devices_Bluetooth",
+    "Win32_NetworkManagement_Ndis",
+    "Win32_System_IO",
+    "Win32_System_Ioctl",
+    "Networking_NetworkOperators",
+    "Networking_Connectivity",
+    "Graphics_Capture",
+    "Graphics_DirectX",
+    "Graphics_DirectX_Direct3D11",
+    "Win32_Graphics_Direct3D",
+    "Win32_Graphics_Direct3D11",
+    "Win32_Graphics_Dxgi",
+    "Win32_Graphics_Dxgi_Common",
+    "Win32_System_WinRT",
+    "Win32_System_WinRT_Direct3D11",
+    "Win32_System_WinRT_Graphics_Capture",
+] }
+
+[dev-dependencies]
+tempfile = "3"
+qrcode = { version = "0.14", default-features = false }

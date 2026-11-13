@@ -1,0 +1,11 @@
+Setu 1.6.0
+
+- Speaks sooner and without pauses. Setu starts talking as soon as the first words of an answer are ready, and the rest follows straight on.
+- Remembers you. Say "remember that my sister's name is Priya", then ask "what's my sister's name?" anytime. "What do you know about me" lists it, "forget that…" removes it.
+- Music in the notch. Artwork and dancing bars while anything plays, a pop-up when the song changes, and on hover the progress, controls and lyrics in time.
+- Several steps in one go: "open a new window in Brave and search for Mr Beast, after that put two Brave windows side by side".
+- Installs no longer give up after a minute; Setu tells you when they finish.
+- "Play something else" skips the song. "I want to do coding" opens VS Code. "Create a file called tut1.cpp" adds the file to your project, and code you type in the chat while coding is laid out for you.
+- WhatsApp: "open the chat with Binod", "send a message to Binod saying I'll be late".
+- To-do lists from a sentence: "I'll code for two hours, then drink water, then play, make a to-do list of these".
+- Typed requests Setu can't do yet get an honest answer and a next step.

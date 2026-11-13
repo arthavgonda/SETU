@@ -1,0 +1,14 @@
+[Unit]
+Description=Setu tray and listening overlay
+After=graphical-session.target setu-daemon.service
+PartOf=graphical-session.target
+Wants=setu-daemon.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/setu-shell
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=graphical-session.target

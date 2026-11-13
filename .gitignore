@@ -1,0 +1,17 @@
+/.devcache/
+/build/
+/target/
+/daemon/target/
+*.user
+/packaging/keys/
+/dist/
+/llama.cpp/
+/third_party/
+__pycache__/
+*.pyc
+*.log
+/tests/
+*.md
+!/README.md
+/.github/
+/assets/Firefox_logo,_2019.svg

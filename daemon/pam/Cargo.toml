@@ -1,0 +1,13 @@
+[package]
+name = "setu-pam"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+name = "pam_setu"
+path = "src/lib.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+libc.workspace = true

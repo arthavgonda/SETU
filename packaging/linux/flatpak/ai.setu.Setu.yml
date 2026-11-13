@@ -1,0 +1,138 @@
+app-id: ai.setu.Setu
+runtime: org.kde.Platform
+runtime-version: '6.9'
+sdk: org.kde.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.rust-stable
+  - org.freedesktop.Sdk.Extension.llvm20
+command: setu-shell
+finish-args:
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --share=ipc
+  - --socket=pulseaudio
+  - --share=network
+  - --device=all
+  - --talk-name=org.kde.StatusNotifierWatcher
+  - --talk-name=org.freedesktop.Notifications
+  - --talk-name=org.freedesktop.secrets
+  - --talk-name=org.a11y.Bus
+  - --talk-name=org.freedesktop.Flatpak
+  - --system-talk-name=org.freedesktop.NetworkManager
+  - --system-talk-name=org.freedesktop.login1
+  - --system-talk-name=org.freedesktop.RealtimeKit1
+  - --system-talk-name=net.hadess.PowerProfiles
+  - --filesystem=xdg-data/applications:ro
+  - --filesystem=/var/lib/flatpak/exports/share/applications:ro
+  - --filesystem=~/.local/share/flatpak/exports/share/applications:ro
+build-options:
+  append-path: /usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin
+  prepend-ld-library-path: /usr/lib/sdk/llvm20/lib
+  env:
+    LIBCLANG_PATH: /usr/lib/sdk/llvm20/lib
+    LLAMA_CPP_DIR: /app
+    LLAMA_CPP_LIB: /app/lib/setu
+    CARGO_HOME: /run/build/setu/cargo
+    SETU_PACKAGING: '1'
+cleanup:
+  - /include
+  - /lib/cmake
+  - /lib/pkgconfig
+  - /share/man
+modules:
+  - name: espeak-ng
+    buildsystem: autotools
+    no-parallel-make: true
+    config-opts:
+      - --disable-static
+      - --without-async
+      - --without-mbrola
+      - --without-sonic
+    sources:
+      - type: git
+        url: https://github.com/espeak-ng/espeak-ng.git
+        tag: '1.52.0'
+      - type: script
+        dest-filename: autogen.sh
+        commands:
+          - ./autogen.sh "$@"
+    post-install:
+      - install -Dm755 /app/bin/espeak-ng /app/lib/setu/espeak-ng
+
+  - name: llama-cpp
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_SHARED_LIBS=ON
+      - -DGGML_BACKEND_DL=ON
+      - -DGGML_CPU_ALL_VARIANTS=ON
+      - -DGGML_NATIVE=OFF
+      - -DLLAMA_BUILD_TESTS=OFF
+      - -DLLAMA_BUILD_EXAMPLES=OFF
+      - -DLLAMA_BUILD_TOOLS=OFF
+      - -DLLAMA_BUILD_SERVER=OFF
+      - -DLLAMA_BUILD_COMMON=OFF
+      - -DLLAMA_BUILD_MTMD=ON
+      - -DMTMD_VIDEO=OFF
+      - -DCMAKE_INSTALL_LIBDIR=lib/setu
+      - -DCMAKE_INSTALL_RPATH=$ORIGIN
+      - -DGGML_BACKEND_DIR=/app/lib/setu
+    sources:
+      - type: git
+        url: https://github.com/ggml-org/llama.cpp.git
+        commit: 338fce6511c744893cc0d3d958b275f40552c7a4
+
+  - name: setu
+    buildsystem: simple
+    build-commands:
+      - install -d /app/lib/setu third_party/bundled/models/wake-gigaspeech-3m
+      - cp -P third_party/sherpa-onnx/lib/*.so* /app/lib/setu/
+      - for f in encoder-epoch-12-avg-2-chunk-16-left-64.int8.onnx decoder-epoch-12-avg-2-chunk-16-left-64.onnx joiner-epoch-12-avg-2-chunk-16-left-64.int8.onnx tokens.txt bpe.model; do cp third_party/kws/$f third_party/bundled/models/wake-gigaspeech-3m/; done
+      - cp third_party/kws/test_wavs/0.wav third_party/bundled/benchmark.wav
+      - cd daemon && cargo --offline build --release --locked -p setu-daemon -p setu-engine
+      - cmake -S . -B build/flatpak -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/app -DSETU_BUILD_TESTS=OFF
+      - cmake --build build/flatpak
+      - cmake --install build/flatpak
+      - install -Dm755 daemon/target/release/setu-daemon /app/bin/setu-daemon
+      - install -Dm755 daemon/target/release/setu-engine /app/bin/setu-engine
+      - install -d /app/share/setu && cp -r third_party/bundled/models /app/share/setu/
+      - install -Dm644 third_party/bundled/benchmark.wav /app/share/setu/benchmark.wav
+      - install -Dm644 packaging/linux/ai.setu.Setu.desktop /app/share/applications/ai.setu.Setu.desktop
+      - install -Dm644 packaging/linux/ai.setu.Setu.metainfo.xml /app/share/metainfo/ai.setu.Setu.metainfo.xml
+      - install -Dm644 packaging/linux/ai.setu.Setu.svg /app/share/icons/hicolor/scalable/apps/ai.setu.Setu.svg
+    sources:
+      - type: dir
+        path: ../../..
+        skip:
+          - build
+          - daemon/target
+          - .devcache
+          - dist
+          - third_party
+      - type: archive
+        url: https://github.com/k2-fsa/sherpa-onnx/releases/download/v2.0.1/sherpa-onnx-v2.0.1-linux-x64-shared-lib.tar.bz2
+        sha256: 532c45bbd41036d83cd70606797529aa8086c2053395a58967736c727625b120
+        dest: third_party/sherpa-onnx
+        only-arches: [x86_64]
+      - type: file
+        url: https://raw.githubusercontent.com/k2-fsa/sherpa-onnx/v2.0.1/sherpa-onnx/c-api/c-api.h
+        sha256: 5698f38ba09ad2bdf085c56a6cbbd7741acf15e25f4ce5c7097b9702cadf437f
+        dest: third_party/sherpa-onnx/include/sherpa-onnx/c-api
+      - type: file
+        url: https://raw.githubusercontent.com/k2-fsa/sherpa-onnx/v2.0.1/LICENSE
+        sha256: cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+        dest: third_party/sherpa-onnx
+      - type: archive
+        url: https://github.com/k2-fsa/sherpa-onnx/releases/download/kws-models/sherpa-onnx-kws-zipformer-gigaspeech-3.3M-2024-01-01.tar.bz2
+        sha256: f170013b4716e41b62b9bfd809687c207cef798ef9bc6534d524e17af9b6561a
+        dest: third_party/kws
+      - type: file
+        url: https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/silero_vad.onnx
+        sha256: 9e2449e1087496d8d4caba907f23e0bd3f78d91fa552479bb9c23ac09cbb1fd6
+        dest: third_party/bundled/models/vad-silero
+      - type: file
+        url: https://github.com/k2-fsa/sherpa-onnx/releases/download/speech-enhancement-models/gtcrn_simple.onnx
+        sha256: e77603ac0c23dac3227dd2d7135b3a585cbee2679048aecfa886657d3ae1b534
+        dest: third_party/bundled/models/denoise-gtcrn
+      - cargo-sources.json

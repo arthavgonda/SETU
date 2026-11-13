@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+if [ "$1" = "configure" ] && command -v systemctl >/dev/null 2>&1; then
+  systemctl --global enable setu-daemon.service setu-shell.service >/dev/null 2>&1 || true
+fi
+if [ "$1" = "configure" ]; then
+  modprobe uinput >/dev/null 2>&1 || true
+  udevadm control --reload-rules >/dev/null 2>&1 || true
+  udevadm trigger --sysname-match=uinput >/dev/null 2>&1 || true
+fi
+exit 0

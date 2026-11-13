@@ -1,0 +1,22 @@
+[package]
+name = "setu-audio"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[features]
+portable = ["dep:cpal"]
+
+[dependencies]
+libc.workspace = true
+serde_json.workspace = true
+cpal = { version = "0.16", optional = true }
+
+[target.'cfg(not(target_os = "linux"))'.dependencies]
+cpal = "0.16"
+
+[target.'cfg(loom)'.dev-dependencies]
+loom = "0.7"
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ["cfg(loom)"] }

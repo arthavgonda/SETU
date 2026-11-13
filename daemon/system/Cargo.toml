@@ -1,0 +1,42 @@
+[package]
+name = "setu-system"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "setu-system"
+path = "src/main.rs"
+
+[dependencies]
+serde_json.workspace = true
+libc.workspace = true
+
+[target.'cfg(target_os = "linux")'.dependencies]
+sha2 = "0.10"
+
+[target.'cfg(windows)'.dependencies]
+sha2 = "0.10"
+windows = { version = "0.61", features = [
+    "Win32_Foundation",
+    "Win32_Security_Cryptography",
+    "Win32_System_Registry",
+    "Win32_System_Com",
+    "Win32_System_Variant",
+    "Win32_System_Ole",
+    "Win32_UI_Accessibility",
+    "Win32_Security",
+    "Win32_Security_Authorization",
+    "Win32_Storage_FileSystem",
+    "Win32_System_IO",
+    "Win32_System_Pipes",
+    "Win32_System_Services",
+    "Win32_System_Threading",
+    "Win32_System_RemoteDesktop",
+    "Win32_System_StationsAndDesktops",
+    "Win32_UI_Input_KeyboardAndMouse",
+    "Win32_UI_WindowsAndMessaging",
+] }
+
+[dev-dependencies]
+tempfile = "3"

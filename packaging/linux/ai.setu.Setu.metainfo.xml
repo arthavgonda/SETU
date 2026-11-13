@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>ai.setu.Setu</id>
+  <name>Setu</name>
+  <summary>Control this computer by voice, privately</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>LicenseRef-proprietary</project_license>
+  <description>
+    <p>Say "Hey Setu", then what you want: open and close apps, change the volume or brightness, connect to Wi-Fi, set timers, answer questions or type for you.</p>
+    <p>Speech recognition, the language model and the voice run on this computer. Nothing is processed before the wake phrase and audio is never stored.</p>
+    <p>Every screen works with the keyboard, a screen reader or by voice, in light, dark and high-contrast themes, with text up to 200%.</p>
+  </description>
+  <launchable type="desktop-id">ai.setu.Setu.desktop</launchable>
+  <categories>
+    <category>Accessibility</category>
+    <category>Utility</category>
+  </categories>
+  <recommends>
+    <control>voice</control>
+    <control>keyboard</control>
+    <control>pointing</control>
+  </recommends>
+  <supports>
+    <control>keyboard</control>
+    <control>voice</control>
+  </supports>
+  <requires>
+    <memory>3500</memory>
+  </requires>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="1.3.0" date="2026-11-03">
+      <description>
+        <p>Knows what is playing in every app and browser tab and asks which one to pause, and works inside web pages through the Setu browser extension: tabs, windows, links and images by position or name, right-click options, and browser settings. Setup is remembered after a restart.</p>
+      </description>
+    </release>
+    <release version="1.2.0" date="2026-11-03">
+      <description>
+        <p>Works inside apps: opens and plays websites in the browser you name, presses keys, clicks buttons by name, finds and opens files on every drive, installs apps from the right store, runs Git, and codes by voice in VS Code with mistake checks.</p>
+      </description>
+    </release>
+    <release version="1.1.0" date="2026-10-28">
+      <description>
+        <p>Natural Indian voices with Kokoro and svara, a model library, graphics card acceleration, a spoken setup that talks with you, and voice enrollment so Setu answers only you.</p>
+      </description>
+    </release>
+    <release version="1.0.0" date="2026-10-28"/>
+  </releases>
+</component>

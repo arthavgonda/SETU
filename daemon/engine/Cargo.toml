@@ -1,0 +1,25 @@
+[package]
+name = "setu-engine"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "setu-engine"
+path = "src/main.rs"
+
+[dependencies]
+setu-common = { path = "../common" }
+setu-sherpa = { path = "../sherpa" }
+setu-audio = { path = "../audio" }
+serde.workspace = true
+serde_json.workspace = true
+libc.workspace = true
+crossbeam-channel.workspace = true
+libloading = "0.8"
+
+[target.'cfg(target_os = "linux")'.dependencies]
+landlock = "0.4"
+
+[build-dependencies]
+bindgen.workspace = true
