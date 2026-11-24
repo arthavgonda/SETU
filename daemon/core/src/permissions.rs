@@ -69,6 +69,48 @@ pub async fn status(core: &Core) -> Value {
     })
 }
 
+pub fn mic_blocked(error: &str) -> bool {
+    #[cfg(windows)]
+    {
+        let e = error.to_ascii_lowercase();
+        e.contains("0x80070005") || e.contains("access is denied") || windows_mic_denied()
+    }
+    #[cfg(not(windows))]
+    {
+        let _ = error;
+        false
+    }
+}
+
+#[cfg(windows)]
+fn windows_mic_denied() -> bool {
+    use windows::Win32::System::Registry::{HKEY, HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE, RRF_RT_REG_DWORD, RRF_RT_REG_SZ, RegGetValueW};
+    use windows::core::PCWSTR;
+    const STORE: &str = r"Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\microphone";
+    fn wide(s: &str) -> Vec<u16> {
+        s.encode_utf16().chain(Some(0)).collect()
+    }
+    fn denies(root: HKEY, path: &str) -> bool {
+        let (p, n) = (wide(path), wide("Value"));
+        let mut buf = [0u16; 16];
+        let mut len = std::mem::size_of_val(&buf) as u32;
+        let r = unsafe { RegGetValueW(root, PCWSTR(p.as_ptr()), PCWSTR(n.as_ptr()), RRF_RT_REG_SZ, None, Some(buf.as_mut_ptr() as *mut _), Some(&mut len)) };
+        if r.is_err() {
+            return false;
+        }
+        let chars = (len as usize / 2).min(buf.len());
+        String::from_utf16_lossy(&buf[..chars]).trim_end_matches('\0').eq_ignore_ascii_case("Deny")
+    }
+    let policy = {
+        let (p, n) = (wide(r"SOFTWARE\Policies\Microsoft\Windows\AppPrivacy"), wide("LetAppsAccessMicrophone"));
+        let mut v = 0u32;
+        let mut len = 4u32;
+        let r = unsafe { RegGetValueW(HKEY_LOCAL_MACHINE, PCWSTR(p.as_ptr()), PCWSTR(n.as_ptr()), RRF_RT_REG_DWORD, None, Some(&mut v as *mut u32 as *mut _), Some(&mut len)) };
+        r.is_ok() && v == 2
+    };
+    policy || denies(HKEY_LOCAL_MACHINE, STORE) || denies(HKEY_CURRENT_USER, STORE) || denies(HKEY_CURRENT_USER, &format!(r"{STORE}\NonPackaged"))
+}
+
 pub fn open_settings(item: &str) -> bool {
     #[cfg(target_os = "linux")]
     {

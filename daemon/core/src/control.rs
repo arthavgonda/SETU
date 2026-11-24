@@ -239,6 +239,7 @@ pub struct Control {
     echo_until: Option<Instant>,
     onboard: Vec<(String, Vec<String>)>,
     mic_ok: bool,
+    mic_denied: bool,
     correction_for: Option<i64>,
     converse: Option<onboard::Converse>,
     shutdown: bool,
@@ -384,6 +385,7 @@ impl Control {
             echo_until: None,
             onboard: Vec::new(),
             mic_ok: true,
+            mic_denied: false,
             correction_for: None,
             converse: None,
             shutdown: false,
@@ -644,7 +646,7 @@ impl Control {
             "muted": self.muted,
             "mutedUntil": self.muted_until,
             "available": self.mic_ok,
-            "permission": if self.mic_ok { "granted" } else { "unknown" },
+            "permission": if self.mic_ok { "granted" } else if self.mic_denied { "denied" } else { "unknown" },
             "device": { "id": dev, "name": name },
             "quietVoice": self.s().bool("audio.quietVoice"),
             "narrowband": self.core.audio.narrowband(),
@@ -807,18 +809,23 @@ impl Control {
                     self.learn_wake(&text);
                 }
             }
-            AudioEvent::DeviceLost(msg) => {
+            AudioEvent::DeviceLost { message, denied } => {
                 self.mic_ok = false;
-                self.core.attention.raise(
-                    &self.core.hub,
-                    crate::attention::Issue::new("mic.missing", "danger", msg).action("Choose device", "ui.open", json!({ "page": "settings/voice" })),
-                );
+                self.mic_denied = denied;
+                let issue = crate::attention::Issue::new("mic.missing", "danger", message);
+                let issue = if denied {
+                    issue.action("Turn on", "permissions.request", json!({ "item": "microphone" }))
+                } else {
+                    issue.action("Choose device", "ui.open", json!({ "page": "settings/voice" }))
+                };
+                self.core.attention.raise(&self.core.hub, issue);
                 self.emit_mic();
             }
             AudioEvent::DeviceOk => {
                 crate::rt::raise_capture(&self.core);
                 if !self.mic_ok {
                     self.mic_ok = true;
+                    self.mic_denied = false;
                     self.core.attention.clear(&self.core.hub, "mic.missing");
                     self.emit_mic();
                 }

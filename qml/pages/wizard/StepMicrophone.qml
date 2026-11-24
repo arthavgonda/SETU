@@ -15,9 +15,14 @@ WizardStep {
     property real level: 0
     property real started: Date.now()
     property real now: Date.now()
-    readonly property bool denied: Daemon.mic.permission === "denied"
+    readonly property bool denied: Daemon.connected && Daemon.mic.permission === "denied"
+    readonly property bool missing: Daemon.connected && !denied && Daemon.mic.available === false
+    readonly property bool ready: Daemon.connected && !denied && Daemon.mic.available === true
+    property bool askedAccess: false
     readonly property string outcome: {
-        if (denied || !Daemon.mic.available)
+        if (!Daemon.connected)
+            return "waiting"
+        if (!ready)
             return "none"
         if (peak >= 0.02)
             return "good"
@@ -25,7 +30,8 @@ WizardStep {
             return "quiet"
         return now - started > 8000 ? "none" : "waiting"
     }
-    canContinue: !denied && Daemon.mic.available
+    canContinue: ready
+    skippable: outcome === "none" && !ready
     screenState: ({ heard: outcome })
     voiceChoices: [{ id: "next", label: qsTr("continue"), phrases: ["continue", "you can hear me", "sounds good"] }]
     function voiceChoice(id) {
@@ -43,7 +49,31 @@ WizardStep {
         started = Date.now()
         now = started
     }
-    Component.onCompleted: load()
+    function openAccess() {
+        Daemon.call("permissions.request", { item: "microphone" }, (ok, r, e) => {
+            if (!ok)
+                step.toast(e.message)
+        })
+    }
+    function askAccess() {
+        if (!denied || askedAccess)
+            return
+        askedAccess = true
+        say(qsTr("Turn on microphone access, then come back."))
+        openAccess()
+    }
+    onDeniedChanged: askAccess()
+    onReadyChanged: {
+        if (!ready)
+            return
+        reset()
+        if (askedAccess)
+            Platform.bringToFront(step.Window.window)
+    }
+    Component.onCompleted: {
+        load()
+        askAccess()
+    }
     Connections {
         target: Daemon
         function onReconnected() { step.load() }
@@ -113,7 +143,7 @@ WizardStep {
         Layout.alignment: Qt.AlignHCenter
         showIcon: true
         level: step.outcome === "good" ? "success" : step.outcome === "quiet" ? "warning" : step.outcome === "none" ? "danger" : "info"
-        text: step.outcome === "good" ? qsTr("I can hear you") : step.outcome === "quiet" ? qsTr("A bit quiet. Move closer.") : step.outcome === "none" ? (step.denied ? qsTr("Microphone access is off") : qsTr("No sound yet")) : qsTr("Listening…")
+        text: step.outcome === "good" ? qsTr("I can hear you") : step.outcome === "quiet" ? qsTr("A bit quiet. Move closer.") : step.outcome === "none" ? (step.denied ? qsTr("Microphone access is off") : step.missing ? qsTr("No microphone found") : qsTr("No sound yet")) : qsTr("Listening…")
     }
     SettingSelect {
         Layout.fillWidth: true
@@ -134,12 +164,9 @@ WizardStep {
     }
     Button {
         Layout.alignment: Qt.AlignHCenter
-        visible: step.outcome === "none"
-        text: qsTr("Open privacy settings")
+        visible: step.outcome === "none" && !step.missing
+        text: step.denied ? qsTr("Turn on microphone access") : qsTr("Open privacy settings")
         iconName: "external-link"
-        onClicked: Daemon.call("permissions.request", { item: "microphone" }, (ok, r, e) => {
-            if (!ok)
-                step.toast(e.message)
-        })
+        onClicked: step.openAccess()
     }
 }

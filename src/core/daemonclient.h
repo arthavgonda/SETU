@@ -42,6 +42,7 @@ public:
     static bool ownedByCurrentUser(const QString &path);
 
     void start();
+    void startWhenMissing(bool withShell);
     void request(const QString &method, const QVariantMap &params, Callback cb);
 
     Q_INVOKABLE void call(const QString &method, const QVariantMap &params = {}, const QJSValue &callback = QJSValue());
@@ -99,6 +100,7 @@ private:
     void onReadyRead();
     void onDisconnected();
     void scheduleRetry();
+    bool settling() const;
     void send(const QJsonObject &obj);
     void handle(const QJsonObject &obj);
     void handleEvent(const QString &topic, const QVariant &data);
@@ -122,6 +124,8 @@ private:
     int m_attempts = 0;
     int m_backoff = 250;
     bool m_helloDone = false;
+    int m_autoStart = 0;
+    qint64 m_startedAt = -1;
     QString m_status = QStringLiteral("connecting");
     QList<Queued> m_backlog;
     QString m_lastError;

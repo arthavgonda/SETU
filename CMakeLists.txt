@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(Setu VERSION 1.8.3 LANGUAGES CXX)
+project(Setu VERSION 1.8.4 LANGUAGES CXX)
 
 set(SETU_PRODUCT_NAME "Setu" CACHE STRING "Product name shown in the interface")
 set(SETU_PRODUCT_FULL_NAME "Speech-Enabled Tool Unification" CACHE STRING "Expanded product name")

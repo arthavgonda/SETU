@@ -103,6 +103,16 @@ void DaemonClient::start()
     connectNow();
 }
 
+void DaemonClient::startWhenMissing(bool withShell)
+{
+    m_autoStart = withShell ? 2 : 1;
+}
+
+bool DaemonClient::settling() const
+{
+    return m_startedAt >= 0 && m_clock.elapsed() - m_startedAt < 20000;
+}
+
 void DaemonClient::setStatus(const QString &s, const QString &error)
 {
     if (m_status == s && m_lastError == error)
@@ -139,6 +149,7 @@ void DaemonClient::reconnectNow()
 void DaemonClient::startDaemon()
 {
     Launcher::startDaemon();
+    m_startedAt = m_clock.elapsed();
     m_backoff = 250;
     m_retry.start(400);
 }
@@ -148,7 +159,7 @@ void DaemonClient::scheduleRetry()
     if (m_status == QLatin1String("mismatch") || m_status == QLatin1String("refused"))
         return;
     m_retry.start(m_backoff);
-    m_backoff = qMin(m_backoff * 2, 5000);
+    m_backoff = qMin(m_backoff * 2, settling() ? 1000 : 5000);
 }
 
 void DaemonClient::onConnected()
@@ -172,6 +183,8 @@ void DaemonClient::onConnected()
                               const QVariantMap r = result.toMap();
                               m_version = r.value(QStringLiteral("daemon")).toMap().value(QStringLiteral("version")).toString();
                               m_helloDone = true;
+                              m_autoStart = 0;
+                              m_startedAt = -1;
                               m_backoff = 250;
                               m_attempts = 0;
                               applySnapshot(r.value(QStringLiteral("snapshot")).toMap());
@@ -221,8 +234,17 @@ void DaemonClient::onDisconnected()
     failAll(QStringLiteral("unavailable"), QStringLiteral("The background service is not running."));
     if (m_status == QLatin1String("mismatch") || m_status == QLatin1String("refused"))
         return;
+    if (m_autoStart && !was) {
+        const bool shell = m_autoStart == 2;
+        m_autoStart = 0;
+        Launcher::startDaemon();
+        if (shell)
+            Launcher::startShell();
+        m_startedAt = m_clock.elapsed();
+        m_backoff = 250;
+    }
     if (was || m_status == QLatin1String("connecting") || m_status == QLatin1String("stopped"))
-        setStatus(m_attempts >= 3 ? QStringLiteral("stopped") : QStringLiteral("connecting"));
+        setStatus(m_attempts >= 3 && !settling() ? QStringLiteral("stopped") : QStringLiteral("connecting"));
     if (m_socket.state() != QLocalSocket::UnconnectedState)
         m_socket.abort();
     scheduleRetry();

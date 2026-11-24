@@ -81,6 +81,8 @@ int main(int argc, char *argv[])
     server.listen(lockName);
 
     DaemonClient daemon(QStringLiteral("window"));
+    if (shot.isEmpty() && qEnvironmentVariableIsEmpty("SETU_RUNTIME_DIR"))
+        daemon.startWhenMissing(true);
     SettingsStore settings;
     Translator translator;
     Router router(page);

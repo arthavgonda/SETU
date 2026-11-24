@@ -17,7 +17,7 @@ Say **"Hey Setu"**, then say what you want done.
 
 <br>
 
-![Version](https://img.shields.io/badge/version-1.8.3-black?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-1.8.4-black?style=for-the-badge)
 ![Linux](https://img.shields.io/badge/Linux-black?style=for-the-badge&logo=linux&logoColor=white)
 ![Windows](https://img.shields.io/badge/Windows-black?style=for-the-badge&logo=windows&logoColor=white)
 ![macOS](https://img.shields.io/badge/macOS-black?style=for-the-badge&logo=apple&logoColor=white)

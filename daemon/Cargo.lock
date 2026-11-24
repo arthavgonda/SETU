@@ -2224,7 +2224,7 @@ dependencies = [
 
 [[package]]
 name = "setu-audio"
-version = "1.8.3"
+version = "1.8.4"
 dependencies = [
  "cpal",
  "libc",
@@ -2234,7 +2234,7 @@ dependencies = [
 
 [[package]]
 name = "setu-common"
-version = "1.8.3"
+version = "1.8.4"
 dependencies = [
  "serde",
  "serde_json",
@@ -2243,7 +2243,7 @@ dependencies = [
 
 [[package]]
 name = "setu-credprov"
-version = "1.8.3"
+version = "1.8.4"
 dependencies = [
  "serde_json",
  "windows 0.61.3",
@@ -2252,7 +2252,7 @@ dependencies = [
 
 [[package]]
 name = "setu-daemon"
-version = "1.8.3"
+version = "1.8.4"
 dependencies = [
  "anyhow",
  "base64 0.22.1",
@@ -2298,7 +2298,7 @@ dependencies = [
 
 [[package]]
 name = "setu-engine"
-version = "1.8.3"
+version = "1.8.4"
 dependencies = [
  "bindgen 0.72.1",
  "crossbeam-channel",
@@ -2314,7 +2314,7 @@ dependencies = [
 
 [[package]]
 name = "setu-face"
-version = "1.8.3"
+version = "1.8.4"
 dependencies = [
  "anyhow",
  "fastrand",
@@ -2330,7 +2330,7 @@ dependencies = [
 
 [[package]]
 name = "setu-facecheck"
-version = "1.8.3"
+version = "1.8.4"
 dependencies = [
  "libc",
  "serde_json",
@@ -2340,14 +2340,14 @@ dependencies = [
 
 [[package]]
 name = "setu-pam"
-version = "1.8.3"
+version = "1.8.4"
 dependencies = [
  "libc",
 ]
 
 [[package]]
 name = "setu-sherpa"
-version = "1.8.3"
+version = "1.8.4"
 dependencies = [
  "bindgen 0.72.1",
  "libc",
@@ -2355,7 +2355,7 @@ dependencies = [
 
 [[package]]
 name = "setu-system"
-version = "1.8.3"
+version = "1.8.4"
 dependencies = [
  "libc",
  "serde_json",

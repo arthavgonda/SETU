@@ -61,7 +61,7 @@ pub enum AudioEvent {
     Onset { id: u64 },
     EnrollSample { samples: Vec<f32> },
     Missed { samples: Vec<f32> },
-    DeviceLost(String),
+    DeviceLost { message: String, denied: bool },
     DeviceOk,
     Overrun(u64),
     Bandwidth { narrow: bool },
@@ -240,7 +240,8 @@ struct Worker {
     started: Instant,
     speech_run: f32,
     dropped_seen: u64,
-    lost_reported: bool,
+    lost: Option<bool>,
+    gate: u32,
     learn: bool,
     hit_in_segment: bool,
     listener_paths: Option<TransducerPaths>,
@@ -322,7 +323,8 @@ pub fn start(models: Models, events: Sender<AudioEvent>, pcm: PcmSink) -> AudioC
                 started: Instant::now(),
                 speech_run: 0.0,
                 dropped_seen: 0,
-                lost_reported: false,
+                lost: None,
+                gate: 0,
                 learn: false,
                 hit_in_segment: false,
                 listener_paths: None,
@@ -363,9 +365,8 @@ impl Worker {
             if self.failed.swap(false, Ordering::Relaxed) {
                 self.close();
                 self.retry_at = Some(Instant::now() + Duration::from_secs(2));
-                if !self.lost_reported {
-                    self.lost_reported = true;
-                    let _ = self.events.send(AudioEvent::DeviceLost("No microphone found. Plug one in or choose a device.".into()));
+                if self.lost.is_none() {
+                    self.report_lost(false);
                 }
             }
             if self.capture.is_none() {
@@ -377,6 +378,12 @@ impl Worker {
                         }
                     continue;
                 }
+                if self.lost == Some(true) && self.gate < 10 && crate::permissions::mic_blocked("") {
+                    self.gate += 1;
+                    self.retry_at = Some(Instant::now() + Duration::from_secs(1));
+                    continue;
+                }
+                self.gate = 0;
                 if !self.open_capture() {
                     continue;
                 }
@@ -565,25 +572,35 @@ impl Worker {
                 self.dropped_seen = 0;
                 self.open.store(true, Ordering::Relaxed);
                 self.retry_at = None;
-                if self.lost_reported {
-                    self.lost_reported = false;
-                }
+                self.lost = None;
+                self.gate = 0;
                 let _ = self.events.send(AudioEvent::DeviceOk);
                 true
             }
             Err(e) => {
-                log::warn!("microphone could not be opened: {e}");
-                if !self.device.is_empty() {
-                    self.device.clear();
+                let denied = crate::permissions::mic_blocked(&e);
+                if denied {
+                    log::warn!("microphone could not be opened: {e}; microphone access is off in the privacy settings");
+                } else {
+                    log::warn!("microphone could not be opened: {e}");
+                    if !self.device.is_empty() {
+                        self.device.clear();
+                    }
                 }
-                self.retry_at = Some(Instant::now() + Duration::from_secs(5));
-                if !self.lost_reported {
-                    self.lost_reported = true;
-                    let _ = self.events.send(AudioEvent::DeviceLost("No microphone found. Plug one in or choose a device.".into()));
-                }
+                self.retry_at = Some(Instant::now() + Duration::from_secs(if denied { 2 } else { 5 }));
+                self.report_lost(denied);
                 false
             }
         }
+    }
+
+    fn report_lost(&mut self, denied: bool) {
+        if self.lost == Some(denied) {
+            return;
+        }
+        self.lost = Some(denied);
+        let message = if denied { "Microphone access is off. Turn it on so I can hear you." } else { "No microphone found. Plug one in or choose a device." };
+        let _ = self.events.send(AudioEvent::DeviceLost { message: message.into(), denied });
     }
 
     fn ensure_spotter(&mut self, keywords: &[Keyword]) -> Option<String> {

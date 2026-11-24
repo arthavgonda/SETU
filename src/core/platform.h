@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QVariantMap>
 #include <QQmlEngine>
+#include <QWindow>
 
 class Platform : public QObject
 {
@@ -63,6 +64,7 @@ public:
     Q_INVOKABLE QString resourceText(const QString &name) const;
     Q_INVOKABLE qint64 processMs() const;
     Q_INVOKABLE QString moveToApplications() const;
+    Q_INVOKABLE void bringToFront(QWindow *window) const;
 
     void readPortal();
     bool eventFilter(QObject *watched, QEvent *event) override;

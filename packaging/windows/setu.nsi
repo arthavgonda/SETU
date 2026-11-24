@@ -27,6 +27,7 @@ InstallDir "$LOCALAPPDATA\Programs\${PRODUCT}"
 InstallDirRegKey HKCU "${UNINST_KEY}" "InstallLocation"
 BrandingText " "
 ShowInstDetails nevershow
+AutoCloseWindow true
 ShowUninstDetails nevershow
 
 Var StartAtSignIn
@@ -49,7 +50,6 @@ Page custom InstallPage InstallPageLeave
 !define MUI_PAGE_HEADER_TEXT "Installing ${PRODUCT}"
 !define MUI_PAGE_HEADER_SUBTEXT " "
 !insertmacro MUI_PAGE_INSTFILES
-Page custom FinishPage FinishPageLeave
 
 UninstPage custom un.ChoicesPage un.ChoicesLeave
 !insertmacro MUI_UNPAGE_INSTFILES
@@ -107,21 +107,17 @@ Function InstallPageLeave
   ${NSD_GetState} $MenuCheck $AddToMenu
 FunctionEnd
 
-Function FinishPage
-  !insertmacro MUI_HEADER_TEXT "${PRODUCT} is installed." " "
-  nsDialogs::Create 1018
-  Pop $0
-  ${NSD_CreateLabel} 0 0 100% 60u "When ${PRODUCT} starts, it opens a short setup that you can answer out loud or with the keyboard. You choose its brain and voice, on this computer or online with your own key. Nothing is downloaded until you say so. After setup, ${PRODUCT} runs in the background. To see the app, say: Hey Setu, open yourself."
-  Pop $0
-  GetDlgItem $0 $HWNDPARENT 1
-  SendMessage $0 ${WM_SETTEXT} 0 "STR:Start ${PRODUCT}"
-  GetDlgItem $0 $HWNDPARENT 2
-  ShowWindow $0 ${SW_HIDE}
-  nsDialogs::Show
-FunctionEnd
-
-Function FinishPageLeave
-  Exec '"$INSTDIR\setu-shell.exe"'
+Function .onInstSuccess
+  ${If} ${Silent}
+    Return
+  ${EndIf}
+  System::Call 'user32::AllowSetForegroundWindow(i -1)'
+  SetOutPath "$INSTDIR"
+  ${If} ${FileExists} "$LOCALAPPDATA\Setu\setup-complete"
+    Exec '"$INSTDIR\setu-shell.exe"'
+  ${Else}
+    Exec '"$INSTDIR\setu-ui.exe" --page wizard'
+  ${EndIf}
 FunctionEnd
 
 Section "Setu" Main

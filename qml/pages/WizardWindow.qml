@@ -55,10 +55,24 @@ Window {
         }
     }
 
+    property bool restored: false
     Component.onCompleted: {
+        restored = Settings.loaded
         const saved = Number(Settings.values["setup.step"] ?? 1)
         step = Math.max(1, Math.min(last, isNaN(saved) || saved > last ? 1 : saved))
         stack.replace(null, Qt.resolvedUrl(steps[step - 1].file), {}, T.StackView.Immediate)
+    }
+    Connections {
+        target: Settings
+        enabled: !win.restored
+        function onValuesChanged() {
+            if (!Settings.loaded)
+                return
+            win.restored = true
+            const saved = Number(Settings.values["setup.step"] ?? 1)
+            if (win.step === 1 && saved > 1 && saved < win.last)
+                win.go(saved)
+        }
     }
 
     Component.onDestruction: {
@@ -236,8 +250,8 @@ Window {
             anchors.right: parent.right
             anchors.margins: Theme.s4
             visible: !Daemon.connected
-            level: Daemon.status === "stopped" ? "danger" : "warning"
-            text: Daemon.status === "stopped" ? qsTr("%1 isn't running.").arg(Brand.productName) : qsTr("Reconnecting…")
+            level: Daemon.status === "stopped" ? "danger" : "info"
+            text: Daemon.status === "stopped" ? qsTr("%1 isn't running.").arg(Brand.productName) : qsTr("Starting %1…").arg(Brand.productName)
             actionText: Daemon.status === "stopped" ? qsTr("Start") : ""
             dismissible: false
             onAction: Daemon.startDaemon()

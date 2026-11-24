@@ -61,6 +61,8 @@ int main(int argc, char *argv[])
     lock.listen(lockName);
 
     DaemonClient daemon(QStringLiteral("shell"));
+    if (qEnvironmentVariableIsEmpty("SETU_RUNTIME_DIR") && qEnvironmentVariableIsEmpty("SETU_UI_PREVIEW"))
+        daemon.startWhenMissing(false);
     SettingsStore settings;
     Translator translator;
 

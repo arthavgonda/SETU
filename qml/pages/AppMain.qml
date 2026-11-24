@@ -13,14 +13,15 @@ QtObject {
         if (window && window.kind === (wantWizard ? "wizard" : "main")) {
             if (!wantWizard)
                 window.go(router.page)
-            window.raise()
-            window.requestActivate()
+            Platform.bringToFront(window)
             return
         }
         const old = window
         window = kind.createObject(null, { initialPage: router.page })
         if (old)
             old.destroy()
+        if (window)
+            Platform.bringToFront(window)
     }
 
     property Component mainComponent: Component {

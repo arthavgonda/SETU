@@ -19,6 +19,7 @@
 #include <QRegularExpression>
 #include <QStyleHints>
 #include <QUrl>
+#include <QWindow>
 
 #ifdef Q_OS_LINUX
 #include <QDBusConnection>
@@ -283,6 +284,29 @@ bool Platform::outsideApplications() const
     if (QFileInfo(b).fileName() != QStringLiteral(SETU_PRODUCT_NAME ".app"))
         return false;
     return !b.startsWith(QLatin1String("/Applications/")) && !b.startsWith(QDir::homePath() + QLatin1String("/Applications/"));
+}
+
+void Platform::bringToFront(QWindow *window) const
+{
+    if (!window)
+        return;
+    if (window->windowStates() & Qt::WindowMinimized)
+        window->showNormal();
+    else if (!window->isVisible())
+        window->show();
+    window->raise();
+#ifdef Q_OS_WIN
+    const HWND hwnd = reinterpret_cast<HWND>(window->winId());
+    const HWND front = GetForegroundWindow();
+    const DWORD mine = GetCurrentThreadId();
+    const DWORD theirs = front ? GetWindowThreadProcessId(front, nullptr) : 0;
+    const bool attached = theirs && theirs != mine && AttachThreadInput(mine, theirs, TRUE);
+    BringWindowToTop(hwnd);
+    SetForegroundWindow(hwnd);
+    if (attached)
+        AttachThreadInput(mine, theirs, FALSE);
+#endif
+    window->requestActivate();
 }
 
 QString Platform::moveToApplications() const
